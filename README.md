@@ -137,13 +137,13 @@
 
 - [事件分发机制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6)
 
-- [ViewGroup中的mFirstTouchTarget是一个什么东西，它有什么作用？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#2viewgroup%E4%B8%AD%E7%9A%84mfirsttouchtarget%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+- [ViewGroup中的mFirstTouchTarget是一个什么东西，它有什么作用？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#1viewgroup%E4%B8%AD%E7%9A%84mfirsttouchtarget%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
 
-- [如果在ViewGroup中拦截了ACTION_DOWN事件会怎样？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#3%E5%A6%82%E6%9E%9C%E5%9C%A8viewgroup%E4%B8%AD%E6%8B%A6%E6%88%AA%E4%BA%86action_down%E4%BA%8B%E4%BB%B6%E4%BC%9A%E6%80%8E%E6%A0%B7)
+- [如果在ViewGroup中拦截了ACTION_DOWN事件会怎样？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#2%E5%A6%82%E6%9E%9C%E5%9C%A8viewgroup%E4%B8%AD%E6%8B%A6%E6%88%AA%E4%BA%86action_down%E4%BA%8B%E4%BB%B6%E4%BC%9A%E6%80%8E%E6%A0%B7)
 
-- [为什么设置了onTouchListener后onClickListener不会被调用？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#4%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
+- [为什么设置了onTouchListener后onClickListener不会被调用？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
 
-- [为什么一个View设置了setOnTouchListener会有提示没有引用performClick方法的警告？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#5%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E4%B8%AAview%E8%AE%BE%E7%BD%AE%E4%BA%86setontouchlistener%E4%BC%9A%E6%9C%89%E6%8F%90%E7%A4%BA%E6%B2%A1%E6%9C%89%E5%BC%95%E7%94%A8performclick%E6%96%B9%E6%B3%95%E7%9A%84%E8%AD%A6%E5%91%8A)
+- [为什么一个View设置了setOnTouchListener会有提示没有引用performClick方法的警告？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
 
 ### View的绘制流程
 
@@ -160,6 +160,8 @@
 - [屏幕刷新机制概述](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#1%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6%E6%A6%82%E8%BF%B0)
 
 - [Choreographer详解](https://github.com/zhpanvip/AndroidNote/wiki/Choreographer%E8%AF%A6%E8%A7%A3)
+
+- [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
 
 - [丢帧一般是什么原因引起的？](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#2%E4%B8%A2%E5%B8%A7%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E5%BC%95%E8%B5%B7%E7%9A%84)
 
@@ -201,25 +203,30 @@
 
 - [Android系统启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 
+- [InputManagerService](https://github.com/zhpanvip/AndroidNote/wiki/InputManagerService)
+
+- [WindowManagerService](https://github.com/zhpanvip/AndroidNote/wiki/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
+
+- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
+
+- [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
+
 - [APP启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 
-- [AMS核心分析](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
-
 - [PMS安装与签名校验](https://github.com/zhpanvip/AndroidNote/wiki/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C)
-
-- [WMS核心分析](https://github.com/zhpanvip/AndroidNote/wiki/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
 
 - [Dalvik与ART](https://github.com/zhpanvip/AndroidNote/wiki/Dalvik%E4%B8%8EART)
 
 - [Fragment核心原理](https://github.com/zhpanvip/AndroidNote/wiki/Fragment%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86)
 
-- [Activity启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 
-### Jetpack
+### Jetpack&系统View
 
 - [ViewModel的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ViewModel%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
 - [WorkManager的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/WorkManager%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+- [Lifecycle实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Lifecycle%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
 - [RecyclerView实现原理](https://github.com/zhpanvip/AndroidNote/wiki/RecyclerView%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
@@ -237,7 +244,7 @@
 
 - [ARouter实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ARouter%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
-- [组件化WebView架构搭建](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BB%84%E4%BB%B6%E5%8C%96WebView%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA)
+
 
 
 
@@ -259,5 +266,24 @@
 - [HTTPS的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C#https%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Socket](https://github.com/zhpanvip/AndroidNote/wiki/Socket)
 
+### 算法
 
+- [排序算法](https://github.com/zhpanvip/AndroidNote/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95)
 
+- [查找算法]()
+
+- [链表相关]()
+
+- [数组相关]()
+
+- [二叉树]()
+
+- [字符串]()
+
+- [递归]()
+
+### 其它
+
+- [组件化WebView架构搭建](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BB%84%E4%BB%B6%E5%8C%96WebView%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA)
+
+- [HR常见问题](https://github.com/zhpanvip/AndroidNote/wiki/HR%E9%9D%A2%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98)
