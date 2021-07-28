@@ -151,6 +151,8 @@
 
 - [XML解析原理](https://github.com/zhpanvip/AndroidNote/wiki/XML%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86)
 
+- [LayoutInflater](https://github.com/zhpanvip/AndroidNote/wiki/LayoutInflater)
+
 - [MeasureSpec是什么？](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
 
 - [requestLayout、invalidate与postInvalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E3%80%81invalidate%E4%B8%8EpostInvalidate)
@@ -199,7 +201,7 @@
 
 - [Binder与AIDL](https://github.com/zhpanvip/AndroidNote/wiki/Binder%E4%B8%8EAIDL)
 
-- [Binder实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Binder%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+- [Binder实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Binder%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86)
 
 - [Android系统启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 
@@ -207,9 +209,11 @@
 
 - [WindowManagerService](https://github.com/zhpanvip/AndroidNote/wiki/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
 
-- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
-
 - [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
+
+- [ViewRootImpl](https://github.com/zhpanvip/AndroidNote/wiki/ViewRootImpl)
+
+- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
 
 - [APP启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 
