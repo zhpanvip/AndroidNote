@@ -4,52 +4,52 @@
 
 - [Java中“==” 和 equals 有什么](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#1java%E4%B8%AD-%E5%92%8C-equals-%E6%9C%89%E4%BB%80%E4%B9%88)
 
--  [为什么重写 equals 方法必须重写 hashcode 方法](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#2%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%E5%BF%85%E9%A1%BB%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95)
+-  [为什么重写 equals 方法必须重写 hashcode 方法](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#2%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%E5%BF%85%E9%A1%BB%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95)
 
-- [下面的代码在JVM中生成了几个String对象？JVM是如何对其进行内存分配的？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#3%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%9C%A8jvm%E4%B8%AD%E7%94%9F%E6%88%90%E4%BA%86%E5%87%A0%E4%B8%AAstring%E5%AF%B9%E8%B1%A1jvm%E6%98%AF%E5%A6%82%E4%BD%95%E5%AF%B9%E5%85%B6%E8%BF%9B%E8%A1%8C%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%9A%84)
+- [下面的代码在JVM中生成了几个String对象？JVM是如何对其进行内存分配的？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#3%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BB%A3%E7%A0%81%E5%9C%A8jvm%E4%B8%AD%E7%94%9F%E6%88%90%E4%BA%86%E5%87%A0%E4%B8%AAstring%E5%AF%B9%E8%B1%A1jvm%E6%98%AF%E5%A6%82%E4%BD%95%E5%AF%B9%E5%85%B6%E8%BF%9B%E8%A1%8C%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%9A%84)
 
-- [了解String的intern()方法吗？它有什么作用？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#4%E4%BA%86%E8%A7%A3string%E7%9A%84intern%E6%96%B9%E6%B3%95%E5%90%97%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
+- [了解String的intern()方法吗？它有什么作用？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#4%E4%BA%86%E8%A7%A3string%E7%9A%84intern%E6%96%B9%E6%B3%95%E5%90%97%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
 
--  [String、StringBuffer与StringBuilder有区别？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#5stringstringbuffer%E4%B8%8Estringbuilder%E6%9C%89%E5%8C%BA%E5%88%AB)
+-  [String、StringBuffer与StringBuilder有区别？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#5stringstringbuffer%E4%B8%8Estringbuilder%E6%9C%89%E5%8C%BA%E5%88%AB)
 
--  [访问修饰符public,private,protected,以及不写（默认）时的区别？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#6%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6publicprivateprotected%E4%BB%A5%E5%8F%8A%E4%B8%8D%E5%86%99%E9%BB%98%E8%AE%A4%E6%97%B6%E7%9A%84%E5%8C%BA%E5%88%AB)
+-  [访问修饰符public,private,protected,以及不写（默认）时的区别？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#6%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6publicprivateprotected%E4%BB%A5%E5%8F%8A%E4%B8%8D%E5%86%99%E9%BB%98%E8%AE%A4%E6%97%B6%E7%9A%84%E5%8C%BA%E5%88%AB)
 
--  [final有哪几种用法？每种用法是什么含义？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#7final%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E7%94%A8%E6%B3%95%E6%AF%8F%E7%A7%8D%E7%94%A8%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%90%AB%E4%B9%89)
+-  [final有哪几种用法？每种用法是什么含义？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#7final%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E7%94%A8%E6%B3%95%E6%AF%8F%E7%A7%8D%E7%94%A8%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%90%AB%E4%B9%89)
 
--  [static 关键的作用](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#8static-%E5%85%B3%E9%94%AE%E7%9A%84%E4%BD%9C%E7%94%A8)
+-  [static 关键的作用](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#8static-%E5%85%B3%E9%94%AE%E7%9A%84%E4%BD%9C%E7%94%A8)
 
--  [内部类可以引用外部类的成员吗？有没有什么限制？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#9%E5%86%85%E9%83%A8%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%A8%E5%A4%96%E9%83%A8%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E5%90%97%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E9%99%90%E5%88%B6)
+-  [内部类可以引用外部类的成员吗？有没有什么限制？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#9%E5%86%85%E9%83%A8%E7%B1%BB%E5%8F%AF%E4%BB%A5%E5%BC%95%E7%94%A8%E5%A4%96%E9%83%A8%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E5%90%97%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E9%99%90%E5%88%B6)
 
--  [int和Integer有什么区别？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#10int%E5%92%8Cinteger%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+-  [int和Integer有什么区别？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#10int%E5%92%8Cinteger%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
 
-- [Java 面向对象的特征有哪些方面？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#11java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2)
+- [Java 面向对象的特征有哪些方面？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#11java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2)
 
-- [简述Java反射机制，反射的作用和应用？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#12%E7%AE%80%E8%BF%B0java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%BA%94%E7%94%A8)
+- [简述Java反射机制，反射的作用和应用？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#12%E7%AE%80%E8%BF%B0java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%BA%94%E7%94%A8)
 
-- [Java泛型是什么？泛型的类型擦除是怎么回事？](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#13java%E6%B3%9B%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88%E6%B3%9B%E5%9E%8B%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4%E6%98%AF%E6%80%8E%E4%B9%88%E5%9B%9E%E4%BA%8B)
+- [Java泛型是什么？泛型的类型擦除是怎么回事？](/post/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md#13java%E6%B3%9B%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88%E6%B3%9B%E5%9E%8B%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4%E6%98%AF%E6%80%8E%E4%B9%88%E5%9B%9E%E4%BA%8B)
 
 
 
 
 ### Java集合框架
 
-- [Hash表与HashMap](https://github.com/zhpanvip/AndroidNote/blob/main/post/Hash%E8%A1%A8%E4%B8%8EHashMap.md)
+- [Hash表与HashMap](/post/Hash%E8%A1%A8%E4%B8%8EHashMap.md)
 
-- [HashMap的工作原理](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#1hashmap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
+- [HashMap的工作原理](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#1hashmap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
 
-- [为什么HashMap在多线程并发存在死循环的问题，JDK1.8中做了哪些优化？](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#2%E4%B8%BA%E4%BB%80%E4%B9%88hashmap%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E6%AD%BB%E5%BE%AA%E7%8E%AF%E7%9A%84%E9%97%AE%E9%A2%98jdk18%E4%B8%AD%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96)
+- [为什么HashMap在多线程并发存在死循环的问题，JDK1.8中做了哪些优化？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#2%E4%B8%BA%E4%BB%80%E4%B9%88hashmap%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E6%AD%BB%E5%BE%AA%E7%8E%AF%E7%9A%84%E9%97%AE%E9%A2%98jdk18%E4%B8%AD%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96)
 
-- [Hashtable与HashMap有什么区别？](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#3hashtable%E4%B8%8Ehashmap%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+- [Hashtable与HashMap有什么区别？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#3hashtable%E4%B8%8Ehashmap%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
 
-- [了解ConcurrentHashMap吗？它是怎么实现的?](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#4%E4%BA%86%E8%A7%A3concurrenthashmap%E5%90%97%E5%AE%83%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+- [了解ConcurrentHashMap吗？它是怎么实现的?](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#4%E4%BA%86%E8%A7%A3concurrenthashmap%E5%90%97%E5%AE%83%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
 
-- [可以使用CocurrentHashMap来代替Hashtable吗？](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#5%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8cocurrenthashmap%E6%9D%A5%E4%BB%A3%E6%9B%BFhashtable%E5%90%97)
+- [可以使用CocurrentHashMap来代替Hashtable吗？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#5%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8cocurrenthashmap%E6%9D%A5%E4%BB%A3%E6%9B%BFhashtable%E5%90%97)
 
-- [ConcurrentHashMap有什么缺陷吗？](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#7concurrenthashmap%E5%9C%A8jdk-7%E5%92%8C8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [ConcurrentHashMap有什么缺陷吗？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#7concurrenthashmap%E5%9C%A8jdk-7%E5%92%8C8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
 
-- [ConcurrentHashMap在JDK 7和8之间的区别](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#7concurrenthashmap%E5%9C%A8jdk-7%E5%92%8C8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [ConcurrentHashMap在JDK 7和8之间的区别](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#7concurrenthashmap%E5%9C%A8jdk-7%E5%92%8C8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
 
-- [Java中HashMap和HashTable的区别？](https://github.com/zhpanvip/AndroidNote/blob/main/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#9java%E4%B8%ADhashmap%E5%92%8Chashtable%E7%9A%84%E5%8C%BA%E5%88%AB)
+- [Java中HashMap和HashTable的区别？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#9java%E4%B8%ADhashmap%E5%92%8Chashtable%E7%9A%84%E5%8C%BA%E5%88%AB)
 
 - [HashMap 和 HashSet 的区别](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#10hashmap-%E5%92%8C-hashset-%E7%9A%84%E5%8C%BA%E5%88%AB)
 
