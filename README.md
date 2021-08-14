@@ -1,3 +1,5 @@
+![公众号:玩转安卓Dev](https://gitee.com/zhpanvip/images/raw/master/project/group/wechat_dyh.png)
+
 ## Java基础
 
 ### Java面向对象与基础知识
