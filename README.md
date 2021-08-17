@@ -56,6 +56,10 @@
 - [Java线程中断机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6)
 - [Java等待与唤醒机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6)
 
+## Kotlin
+
+- [协程实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+- [高阶函数实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
 ## Android
 
@@ -95,10 +99,9 @@
 ### View的绘制流程
 
 - [简述View的绘制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
-- [XML解析原理](https://github.com/zhpanvip/AndroidNote/wiki/XML%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86)
 - [LayoutInflater](https://github.com/zhpanvip/AndroidNote/wiki/LayoutInflater)
 - [MeasureSpec是什么？](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
-- [requestLayout、invalidate与postInvalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E3%80%81invalidate%E4%B8%8EpostInvalidate)
+- [requestLayout与invalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E4%B8%8Einvalidate)
 
 ### Android屏幕刷新机制
 
@@ -155,7 +158,7 @@
 - [RxJava实现原理](https://github.com/zhpanvip/AndroidNote/wiki/RxJava%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Butterknife实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Butterknife%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [ARouter实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ARouter%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-
+- [Tinker实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Tinker%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
 
 
@@ -167,6 +170,7 @@
    - [TCP协议的三次握手](https://github.com/zhpanvip/AndroidNote/wiki/TCP%E4%B8%8EUDP#tcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B)
    - [TCP协议的四次挥手](https://github.com/zhpanvip/AndroidNote/wiki/TCP%E4%B8%8EUDP#tcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B)
 - [IP 协议相关技术](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C#ip-%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF)
+- [网络I/O模型](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BD%91%E7%BB%9CI-O%E6%A8%A1%E5%9E%8B)
 - [HTTP协议](https://github.com/zhpanvip/AndroidNote/wiki/Http%E5%8D%8F%E8%AE%AE)
 - [HTTPS的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/HTTPS%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Socket](https://github.com/zhpanvip/AndroidNote/wiki/Socket)
