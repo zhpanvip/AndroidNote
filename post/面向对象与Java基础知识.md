@@ -82,15 +82,18 @@ public String toString() {
 详情参考：[Java进阶--深入理解Java中的字符串（二）](https://blog.csdn.net/qq_20521573/article/details/108521881)
 
 ##  6.访问修饰符public,private,protected,以及不写（默认）时的区别？
+
 ![在这里插入图片描述](https://img-blog.csdn.net/20180924164223893?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwNTIxNTcz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
 类的成员不写访问修饰时默认为default。默认对于同一个包中的其他类相当于公开（public），对于不是同一个包中的其他类相当于私有（private）。受保护（protected）对子类相当于公开，对不是同一包中的没有父子关系的类相当于私有。Java中，外部类的修饰符只能是public或默认，类的成员（包括内部类）的修饰符可以是以上四种。
 
 ## 7.final有哪几种用法？每种用法是什么含义？
-1）当你在类中定义变量时，在其前面加上final关键字，那便是说，这个变量一旦被初始化便不可改变。
-2）将方法声明为final，那就说明你已经知道这个方法提供的功能已经满足你要求，不需要进行扩展，并且也不允许任何从此类继承的类来覆写这个方法，但是继承仍然可以继承这个方法，也就是说可以直接使用。
-3）当你将final用于类身上时，你就需要仔细考虑，因为一个final类是无法被任何人继承的，那也就意味着此类在一个继承树中是一个叶子类，并且此类的设计已被认为很完美而不需要进行修改或扩展。
+- 1）成员变量被final关键字修饰，意味着这个变量一旦被初始化便不可改变，相当于一个常量。final修饰的成员变量只能在初始化时或者构造方法中赋值。
+- 2）方法被final关键字修饰时，意味着这个方法不能被其子类重写。但子类仍然可以继承这个方法，也就是说可以在子类中直接使用这个final方法。
+- 3）当一个类被final修饰时，意味着这个类不能再被其他类继承。也就是说这个类在一个继承树中是一个叶子类，并且此类的设计已被认为很完美而不需要进行修改或扩展。
 
 ## 8.static 关键的作用
+
 static 是 Java 中非常重要的关键字，static 表示的概念是 静态的，在 Java 中，static 主要用来：
 
 - 修饰变量，static 修饰的变量称为静态变量、也称为类变量，类变量属于类所有，对于不同的类来说，static 变量只有一份，static 修饰的变量位于方法区中；static 修饰的变量能够直接通过 类名.变量名 来进行访问，不用通过实例化类再进行使用。
@@ -98,7 +101,7 @@ static 是 Java 中非常重要的关键字，static 表示的概念是 静态�
 - static 可以修饰代码块，主要分为两种，一种直接定义在类中，使用 static{}，这种被称为静态代码块，一种是在类中定义静态内部类，使用 static class xxx 来进行定义。
 - static 可以用于静态导包，通过使用 import static xxx  来实现，这种方式一般不推荐使用
 - static 可以和单例模式一起使用，通过双重检查锁来实现线程安全的单例模式。
-- 
+
 详情请参考 [static 还能难得住我？](https://mp.weixin.qq.com/s?__biz=MzI0ODk2NDIyMQ==&mid=2247484455&idx=1&sn=582d5d2722dab28a36b6c7bc3f39d3fb&chksm=e999f135deee7823226d4da1e8367168a3d0ec6e66c9a589843233b7e801c416d2e535b383be&token=1154740235&lang=zh_CN#rd)
 
 

@@ -80,7 +80,7 @@ public void requestLayout() {
 
 mParent.requestLayout()方法会一层一层的向上递归调用，最终调用ViewRootImpl的requestLayout，代码如下：
 
-```java 
+```java
 // ViewRootImpl
 @Override
 public void requestLayout() {
@@ -410,7 +410,7 @@ public ViewParent invalidateChildInParent(int[] location, Rect dirty) {
 
 
 
-```java 
+```java
 private void invalidateRectOnScreen(Rect dirty) {
     final Rect localDirty = mDirty;
 

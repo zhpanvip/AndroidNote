@@ -56,6 +56,9 @@
 - [Java线程中断机制](/post/Java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6.md)
 - [Java等待与唤醒机制](/post/Java%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6.md)
 
+## Kotlin
+- [协程实现原理](/post/%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
+- [高阶函数实现原理](/post/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 
 ## Android
 
@@ -98,7 +101,7 @@
 - [XML解析原理](/post/XML%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86.md)
 - [LayoutInflater](/post/LayoutInflater.md)
 - [MeasureSpec是什么？](/post/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
-- [requestLayout、invalidate与postInvalidate](/post/requestLayout%E3%80%81invalidate%E4%B8%8EpostInvalidate.md)
+- [requestLayout与invalidate](/post/requestLayout%E4%B8%8Einvalidate.md)
 
 ### Android屏幕刷新机制
 
