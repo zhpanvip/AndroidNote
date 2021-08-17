@@ -95,10 +95,9 @@
 ### View的绘制流程
 
 - [简述View的绘制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
-- [XML解析原理](https://github.com/zhpanvip/AndroidNote/wiki/XML%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86)
 - [LayoutInflater](https://github.com/zhpanvip/AndroidNote/wiki/LayoutInflater)
 - [MeasureSpec是什么？](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
-- [requestLayout、invalidate与postInvalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E3%80%81invalidate%E4%B8%8EpostInvalidate)
+- [requestLayout与invalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E4%B8%8Einvalidate)
 
 ### Android屏幕刷新机制
 
