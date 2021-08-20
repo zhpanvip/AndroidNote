@@ -56,6 +56,14 @@
 - [Java线程中断机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6)
 - [Java等待与唤醒机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6)
 
+## 设计模式
+
+- [单利模式](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F)
+- [动态代理]()
+- [观察者模式]()
+- [策略模式]()
+
+
 ## Kotlin
 
 - [协程实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
@@ -178,12 +186,12 @@
 ### 算法
 
 - [排序算法](https://github.com/zhpanvip/AndroidNote/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95)
-- [查找算法]()
-- [链表相关]()
-- [数组相关]()
-- [二叉树]()
-- [字符串]()
-- [递归]()
+- [查找算法](https://github.com/zhpanvip/AndroidNote/wiki/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95)
+- [链表相关](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
+- [数组相关](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
+- [二叉树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
+- [字符串](https://github.com/zhpanvip/AndroidNote/wiki/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
+- [递归](https://github.com/zhpanvip/AndroidNote/wiki/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95)
 
 ### 其它
 

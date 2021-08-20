@@ -160,9 +160,6 @@
 - [ARouter实现原理](/post/ARouter%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 
 
-
-
-
 ### 计算机网络
 - [简述TCP/IP协议](/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md#tcpip%E5%8D%8F%E8%AE%AE)
 - [TCP与UDP](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md)
@@ -181,12 +178,12 @@
 ### 算法
 
 - [排序算法](/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.md)
-- [查找算法]()
-- [链表相关]()
-- [数组相关]()
-- [二叉树]()
-- [字符串]()
-- [递归]()
+- [查找算法](/post/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95.md)
+- [链表相关](/post/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.md)
+- [数组相关](/post/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.md)
+- [二叉树](/post/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.md)
+- [字符串](/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95.md)
+- [递归](/post/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95)
 
 ### 其它
 
