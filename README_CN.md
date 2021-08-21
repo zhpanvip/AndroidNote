@@ -56,6 +56,14 @@
 - [Java线程中断机制](/post/Java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6.md)
 - [Java等待与唤醒机制](/post/Java%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6.md)
 
+## 设计模式
+
+- [单利模式](/post/%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F.md)
+- [动态代理](/post/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.md)
+- [观察者模式](/post/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md)
+- [策略模式]()
+- [命令模式]()
+
 ## Kotlin
 - [协程实现原理](/post/%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [高阶函数实现原理](/post/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)

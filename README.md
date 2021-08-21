@@ -59,10 +59,10 @@
 ## 设计模式
 
 - [单利模式](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F)
-- [动态代理]()
-- [观察者模式]()
+- [动态代理](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86)
+- [观察者模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
 - [策略模式]()
-
+- [命令模式]()
 
 ## Kotlin
 
