@@ -109,18 +109,15 @@
 - [XML解析原理](/post/XML%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86.md)
 - [LayoutInflater](/post/LayoutInflater.md)
 - [MeasureSpec是什么？](/post/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
-- [requestLayout与invalidate](/post/requestLayout%E4%B8%8Einvalidate.md)
 
 ### Android屏幕刷新机制
 
-- [屏幕刷新机制概述](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#1%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6%E6%A6%82%E8%BF%B0)
+- [屏幕刷新机制概述](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
+- [UI渲染流程](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
 - [Choreographer详解](/post/Choreographer%E8%AF%A6%E8%A7%A3.md)
+- [requestLayout与invalidate](/post/requestLayout%E4%B8%8Einvalidate.md)
 - [SurfaceFlinger](/post/SurfaceFlinger.md)
-- [丢帧一般是什么原因引起的？](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#2%E4%B8%A2%E5%B8%A7%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E5%BC%95%E8%B5%B7%E7%9A%84)
-- [如果在屏幕快刷新的时候才去onDraw绘制会丢帧么](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#3%E5%A6%82%E6%9E%9C%E5%9C%A8%E5%B1%8F%E5%B9%95%E5%BF%AB%E5%88%B7%E6%96%B0%E7%9A%84%E6%97%B6%E5%80%99%E6%89%8D%E5%8E%BBondraw%E7%BB%98%E5%88%B6%E4%BC%9A%E4%B8%A2%E5%B8%A7%E4%B9%88)
-- [如果快速调用10次requestLayout，会调用10次onDraw吗？](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#4%E5%A6%82%E6%9E%9C%E5%BF%AB%E9%80%9F%E8%B0%83%E7%94%A810%E6%AC%A1requestlayout%E4%BC%9A%E8%B0%83%E7%94%A810%E6%AC%A1ondraw%E5%90%97)
-- [简述UI渲染流程](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#5%E7%AE%80%E8%BF%B0ui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B.md)
-- [View 刷新机制](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#6view-%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md)
+- [相关面试题](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%B8%89%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98)
 
 ### 性能优化
 
@@ -164,6 +161,7 @@
 - [OkHttp实现原理](/post/OKHttp%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [Retrofit实现原理](/post/Retrofit%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [RxJava实现原理](/post/RxJava%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
+- [LeakCanary实现原理](/post/LeakCanary-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [Butterknife实现原理](/post/Butterknife%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [ARouter实现原理](/post/ARouter%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 

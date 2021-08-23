@@ -109,18 +109,15 @@
 - [简述View的绘制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
 - [LayoutInflater](https://github.com/zhpanvip/AndroidNote/wiki/LayoutInflater)
 - [MeasureSpec是什么？](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
-- [requestLayout与invalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E4%B8%8Einvalidate)
 
 ### Android屏幕刷新机制
 
-- [屏幕刷新机制概述](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#1%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6%E6%A6%82%E8%BF%B0)
+- [屏幕刷新机制概述](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
+- [UI渲染流程](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
 - [Choreographer详解](https://github.com/zhpanvip/AndroidNote/wiki/Choreographer%E8%AF%A6%E8%A7%A3)
+- [requestLayout与invalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E4%B8%8Einvalidate)
 - [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
-- [丢帧一般是什么原因引起的？](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#2%E4%B8%A2%E5%B8%A7%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0%E5%BC%95%E8%B5%B7%E7%9A%84)
-- [如果在屏幕快刷新的时候才去onDraw绘制会丢帧么](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#3%E5%A6%82%E6%9E%9C%E5%9C%A8%E5%B1%8F%E5%B9%95%E5%BF%AB%E5%88%B7%E6%96%B0%E7%9A%84%E6%97%B6%E5%80%99%E6%89%8D%E5%8E%BBondraw%E7%BB%98%E5%88%B6%E4%BC%9A%E4%B8%A2%E5%B8%A7%E4%B9%88)
-- [如果快速调用10次requestLayout，会调用10次onDraw吗？](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#4%E5%A6%82%E6%9E%9C%E5%BF%AB%E9%80%9F%E8%B0%83%E7%94%A810%E6%AC%A1requestlayout%E4%BC%9A%E8%B0%83%E7%94%A810%E6%AC%A1ondraw%E5%90%97)
-- [简述UI渲染流程](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#5%E7%AE%80%E8%BF%B0ui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
-- [View 刷新机制](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#6view-%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6)
+- [相关面试题](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6#%E4%B8%89%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98)
 
 ### 性能优化
 
@@ -164,6 +161,7 @@
 - [OkHttp实现原理](https://github.com/zhpanvip/AndroidNote/wiki/OKHttp%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Retrofit实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Retrofit%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [RxJava实现原理](https://github.com/zhpanvip/AndroidNote/wiki/RxJava%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+- [LeakCanary实现原理](https://github.com/zhpanvip/AndroidNote/wiki/LeakCanary-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Butterknife实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Butterknife%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [ARouter实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ARouter%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Tinker实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Tinker%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
