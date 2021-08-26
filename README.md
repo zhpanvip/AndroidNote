@@ -77,6 +77,7 @@
 - [SparseArray实现原理](https://github.com/zhpanvip/AndroidNote/wiki/SparseArray%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [ArrayMap的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ArrayMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [SharedPreferences](https://github.com/zhpanvip/AndroidNote/wiki/SharedPreferences)
+- [Bitmap](https://github.com/zhpanvip/AndroidNote/wiki/Bitmap)
 
 ### Android消息机制
 

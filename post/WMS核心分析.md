@@ -1,4 +1,18 @@
-## 概述
+## Window的添加过程概述
+
+1. 通过getSystemService获取WindowManagerService的代理对象WindowManagerImpl，调用其addView将View添加到WindowManager。
+2. WindowManagerImpl的addView方法委托WindowManagerGlobal进行添加View。
+3. WindowManagerGlobal是一个单利，它的addView方法中会实例化ViewRootImpl，并且会调用ViewRootImpl的setView将View添加到ViewRootImpl中。
+4. ViewRootImpl是Window和View之间的通信纽带。它会将View添加到WMS，并且处理WMS传来的触摸事件及View的绘制与更新。
+5. ViewRootImpl的构造方法中会通过WindowManagerGlobal的getWindowSession获取Binder的服务代理WindowSession，还会实例化一个mWindow，
+6. mWindow是一个W类继承了IWindow.Stub的Binder服务对象，可视为APP端的窗口对象，主要作用是传递给WMS，并作作为WMS向APP端发送消息的通道。
+7. WindowManagerGlobal的getWindowSession方法中通过WindowManagerService的代理的openSession方法打开一个Session返回给APP端
+8. Session继承了IWindowSession.Stub，是一个Binder通信的Stub端，它封装了每一个Session会话的操作。
+9. 接下来调用Session的addToDisplayWithoutInputChannel添加一个窗口
+10. addToDisplayWithoutInputChannel方法中调用WindowManagerService的addWindow来添加Window，即最终通过WMS来添加Window
+
+
+## WMS概述概述
 
 WindowManagerService(简称WMS)是负责Android的窗口管理，但是它其实只负责管理，比如窗口的添加、移除、调整顺序等，至于图像的绘制与合成之类的都不是WMS管理的范畴，WMS更像在更高的层面对于Android窗口的一个抽象，真正完成图像绘制的是APP端，而完成图层合成的是SurfaceFlinger服务。
 

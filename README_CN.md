@@ -76,6 +76,7 @@
 - [SparseArray实现原理](/post/SparseArray%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [ArrayMap的实现原理](/post/ArrayMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [SharedPreferences](/post/SharedPreferences.md)
+- [Bitmap](post/AndroidNote/wiki/Bitmap.md)
 
 ### Android消息机制
 
