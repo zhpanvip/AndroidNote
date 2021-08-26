@@ -1,4 +1,28 @@
-## 一 View的绘制流程概述
+[Choreographer汇总](post/Choreographer%E8%AF%A6%E8%A7%A3.md)
+
+### View的绘制流程概述
+
+1. TraversalRunnable的run方法调用doTraversal方法开启View的绘制流程
+2. doTraversal方法中首先会根据mTraversalScheduled的标记判断是否需要执行绘制，接着移除同步屏障，调用performTraversals开始绘制。
+3. performTraversals中会根据Window的LayoutParams计算DecorView的MeasureSpec，然后分别执行performMeasure、performLayout、performDraw。
+4. View的测量可分为View的测量和ViewGroup的测量，View的测量流程：
+   - 调用View的measure方法执行公用的测量，然后执行onMeasure
+   - onMeasure中会通过getDefaultSize确定并设置View自身的大小
+   - getDefaultSize确定View的大小是根据父View传来的MeasureSpec参数确定的
+5. ViewGroup除了测量本身大小，还会通过measureChildren遍历子View，并通过measureChild测量子View的大小：
+   - measureChild中拿到子View的LayoutParams并计算子View的MeasureSpec然后调用child.measure方法
+   - ViewGroup是一个抽象类，没有重写onMeasure方法，具体的测量逻辑是在其子View中根据子View的特性进行测量的
+6. 当View的大小确定后，会调用performaLayout开始View的布局流程:
+   - layout方法中通过setFrame来确定View的四个顶点，即确定View在父View中的位置，并得到一个boolean值表示是否需要重新布局
+   - 如果需要重新布局则调用onLayout开始布局，onLayout方法的作用是父View确定子View的位置。View和ViewGroup中都没有onLayout的具体实现。需要子View根据自身特性进行布局。
+7. 经过测量和布局流程后会确定View的大小及位置，接着调用performDraw->DecorView.draw开始View的绘制过程。
+   - drawBackground绘制背景
+   - onDraw 绘制自己
+   - dispatchDraw 绘制child
+   - onDrawScrollBars 绘制装饰
+
+
+## 一 View的绘制流程详细过程
 
 ### 1.Framework层与绘制流程相关的知识点
 

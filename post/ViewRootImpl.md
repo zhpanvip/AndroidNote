@@ -1,3 +1,15 @@
+## ViewRootImpl概述
+
+1. WindowManager在添加窗口的时候会通过WindowManagerGlobal代理的addView方法来添加View
+2. 在这个addView方法中会实例化ViewRootImpl，并且通过ViewRootImpl.setView将Window的LayoutParams以及DecoreView传递给ViewRootImpl.
+3. WindowManagerGlobal的addView、removeView、updateView都是通过ViewRootImpl来执行的，调用流程为WindowManagerImpl -> WindowManagerGlobal -> ViewRootImpl
+4. ViewRootImpl的setView方法中会通过WindowSession的addToDisplay方法完成Window的添加
+5. WindowSession是一个Binder对象，实现类是Session，也就是说addToDisplay其实是一次IPC过程，调用了远程Session中的addToDisplay方法
+6. Session中的addToDisplay中又调用WindowManagerService的addWindow方法，即Window的添加请求最终是通过WindowManagerService来添加的。
+7. 在Activity的setContentView被调用的时候窗口还没有被添加到WindowManager中，只有在调用了Activity的handleResumeActivity方法才会将DecorView添加到WindowManager中。
+8. ViewRootImpl与[Choreograhper](post/Choreographer%E8%AF%A6%E8%A7%A3.md)配合负责执行View的绘制流程
+9. [ImputManagerService](post/InputManagerService.md)->ViewRootimpl配合[Choreograhper](post/Choreographer%E8%AF%A6%E8%A7%A3.md)处理触摸事件的传递
+
 ViewRootImpl是一个Android视图层次结构的顶部，是View和WindowManager的桥梁。ViewRootImpl与Choreographer协同完成View的绘制，也负责接收底层的触摸事件和对触摸事件的中转分发。
 
 ## 一、ViewRootImpl与窗口的添加
