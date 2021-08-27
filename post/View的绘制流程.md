@@ -1,4 +1,14 @@
-[Choreographer汇总](post/Choreographer%E8%AF%A6%E8%A7%A3.md)
+
+
+### View绘制前相关流程概述
+
+1. 在Activity被实例化后调用Activity的attach方法时会实例化PhoneWindow，并通过PhoneWindow的setWindowManager方法与WindowManager关联。
+2. Activity的onCreate方法中会通过setContentView实例化DecorView，并将Activity中的布局文件添加到DecorView的content中。
+3. ActivityThread的handleResumeActivity中，会将DecorView添加到WindowManager中，即执行[WMS添加Window的流程](post/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
+4. 在Window添加过程中会实例化ViewRootImpl,并且将DecorView传递给ViewRootImpl。
+5. ViewRootImpl是一个Android视图层接口的顶部，是View和WindowManager的桥梁，ViewRootImpl与Choreographer协同完成View的绘制，也负责接收底层的触摸事件的中转分发。
+
+### [Choreographer汇总](post/Choreographer%E8%AF%A6%E8%A7%A3.md)
 
 ### View的绘制流程概述
 
