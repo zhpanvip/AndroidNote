@@ -77,6 +77,7 @@
 - [ArrayMap的实现原理](/post/ArrayMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [SharedPreferences](/post/SharedPreferences.md)
 - [Bitmap](post/AndroidNote/wiki/Bitmap.md)
+- [Fragment核心原理](/post/Fragment%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.md)
 
 ### Android消息机制
 
@@ -96,29 +97,52 @@
 - [IntentService是什么？](/post/IntentService%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [IdleHandler是什么？](/post/Handler%E7%9B%B8%E5%85%B3.md#15idlehandler%E6%98%AF%E4%BB%80%E4%B9%88)
 
+### Framework
+
+- [Binder与AIDL](/post/Binder%E4%B8%8EAIDL.md)
+- [Binder实现原理](/post/Binder%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86.md)
+- [Android系统启动流程](/post/Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
+- [InputManagerService](/post/InputManagerService.md)
+- [WindowManagerService](/post/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
+- [Choreographer详解](/post/Choreographer%E8%AF%A6%E8%A7%A3.md)
+- [SurfaceFlinger](/post/SurfaceFlinger.md)
+- [ViewRootImpl](/post/ViewRootImpl.md)
+- [ActivityManagerService](/post/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
+- [APP启动流程](/post/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
+- [PMS安装与签名校验](/post/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C.md)
+- [Dalvik与ART](/post/Dalvik%E4%B8%8EART.md)
+
+
+
 ### View事件分发机制
 
+- [ViewRootImpl](/post/ViewRootImpl.md)
 - [事件分发机制流程](/post/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6.md)
 - [ViewGroup中的mFirstTouchTarget是一个什么东西，它有什么作用？](/post/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6.md#1viewgroup%E4%B8%AD%E7%9A%84mfirsttouchtarget%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
 - [如果在ViewGroup中拦截了ACTION_DOWN事件会怎样？](/post/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6.md#2%E5%A6%82%E6%9E%9C%E5%9C%A8viewgroup%E4%B8%AD%E6%8B%A6%E6%88%AA%E4%BA%86action_down%E4%BA%8B%E4%BB%B6%E4%BC%9A%E6%80%8E%E6%A0%B7)
 - [为什么设置了onTouchListener后onClickListener不会被调用？](/post/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6.md#3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
 - [为什么一个View设置了setOnTouchListener会有提示没有引用performClick方法的警告？](/post/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6.md#3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
 
-### View的绘制流程
-
-- [简述View的绘制流程](/post/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
-- [XML解析原理](/post/XML%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86.md)
-- [LayoutInflater](/post/LayoutInflater.md)
-- [MeasureSpec是什么？](/post/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
-
 ### Android屏幕刷新机制
-
-- [屏幕刷新机制概述](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
+- [WindowManagerService](/post/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
+- [屏幕刷新机制](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
 - [UI渲染流程](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%BA%8Cui%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
 - [Choreographer详解](/post/Choreographer%E8%AF%A6%E8%A7%A3.md)
 - [requestLayout与invalidate](/post/requestLayout%E4%B8%8Einvalidate.md)
 - [SurfaceFlinger](/post/SurfaceFlinger.md)
 - [相关面试题](/post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md#%E4%B8%89%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98)
+
+### View的绘制流程
+- [View的绘制流程](/post/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
+- [LayoutInflater](/post/LayoutInflater.md)
+- [MeasureSpec](/post/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.md#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
+
+
+### Activity启动
+- [Activity启动流程](post/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
+- [Instrumentation](post/Instrumentation.md)
+- [ActivityManagerService](post/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
+- [ActivityThread](post/ActivityThread.md)
 
 ### 性能优化
 
@@ -133,20 +157,7 @@
 - [线上性能监控1--线上监控切入点](/post/%E7%BA%BF%E4%B8%8A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7.md)
 - [线上性能监控2--Matrix实现原理](/post/%E7%BA%BF%E4%B8%8A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A72-Matrix%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 
-### Framework
 
-- [Binder与AIDL](/post/Binder%E4%B8%8EAIDL.md)
-- [Binder实现原理](/post/Binder%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86.md)
-- [Android系统启动流程](/post/Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
-- [InputManagerService](/post/InputManagerService.md)
-- [WindowManagerService](/post/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
-- [SurfaceFlinger](/post/SurfaceFlinger.md)
-- [ViewRootImpl](/post/ViewRootImpl.md)
-- [ActivityManagerService](/post/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
-- [APP启动流程](/post/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
-- [PMS安装与签名校验](/post/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C.md)
-- [Dalvik与ART](/post/Dalvik%E4%B8%8EART.md)
-- [Fragment核心原理](/post/Fragment%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.md)
 
 
 ### Jetpack&系统View
