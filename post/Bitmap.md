@@ -2,9 +2,12 @@
 
 Bitmap的构造方法的修饰符是default的，意味着无法直接通过构造方法实例化Bitmap。
 
+
+
 ### 1. BitmapFactory
 
 Android中提供了BitmapFactory来实例化Bitmap。BitmapFactory提供了多个decodeXXX方法供从不同来源加载图片资源并解析成Bitmap。主要方法如下图所示：
+
 
 
 ![](https://img-blog.csdnimg.cn/20181213211808924.png)
@@ -19,7 +22,7 @@ Android中提供了BitmapFactory来实例化Bitmap。BitmapFactory提供了多�
 
 #### decodeResource
 
-```kotlin 
+```kotlin 
 val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
 ```
 
@@ -118,6 +121,17 @@ public static Bitmap createScaledBitmap(@NonNull Bitmap src, int dstWidth, int d
 
 
 
+**BitmapFactory.Options的使用**
+
+```kotlin
+    val options = BitmapFactory.Options()
+    options.inPreferredConfig = Bitmap.Config.RGB_565  // 设置bitmap的颜色格式
+    options.inSampleSize = 2 // 设置采样率
+    val bitmap = BitmapFactory.decodeResource(resources, R.drawable.image, options)
+```
+
+
+
 ## 图片压缩
 
 ### 1.质量压缩
@@ -165,19 +179,8 @@ private void compressMatrix() {
 
 通过inPreferredConfig的配置，修改单个像素点占用的内存来实现压缩。如在包含透明通道的图片中可以将inPreferredConfig设置为RGB_565，相比RGB_8888节省一半的内存开销。
 
-
-
 内容来源：
 
 https://blog.csdn.net/wanliguodu/article/details/84973846
 
 https://www.jianshu.com/p/08ed0e3c4e71
-
-
-
-
-
-
-
-
-
