@@ -73,11 +73,14 @@
 ### Android基础知识
 
 - [Android基础知识汇总](/post/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB.md)
+- [MVC、MVP与MVVM](post/MVC%E3%80%81MVP%E4%B8%8EMVVM.md)
 - [SparseArray实现原理](/post/SparseArray%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [ArrayMap的实现原理](/post/ArrayMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [SharedPreferences](/post/SharedPreferences.md)
 - [Bitmap](post/AndroidNote/wiki/Bitmap.md)
+- [Activity的启动模式](post/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F.md)
 - [Fragment核心原理](/post/Fragment%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.md)
+- [组件化WebView架构搭建](/post/%E7%BB%84%E4%BB%B6%E5%8C%96WebView%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA.md)
 
 ### Android消息机制
 
@@ -111,7 +114,6 @@
 - [APP启动流程](/post/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.md)
 - [PMS安装与签名校验](/post/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C.md)
 - [Dalvik与ART](/post/Dalvik%E4%B8%8EART.md)
-
 
 
 ### View事件分发机制
@@ -205,5 +207,4 @@
 
 ### 其它
 
-- [组件化WebView架构搭建](/post/%E7%BB%84%E4%BB%B6%E5%8C%96WebView%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA.md)
 - [HR常见问题](/post/HR%E9%9D%A2%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98.md)
