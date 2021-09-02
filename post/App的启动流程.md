@@ -1,3 +1,5 @@
+[ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
+
 ## App启动流程分析
 
 AndroidManifest文件中配置默认启动的Activity：	
