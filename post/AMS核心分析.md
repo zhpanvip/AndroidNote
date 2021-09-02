@@ -1,3 +1,127 @@
+AMS是系统的引导服务，应用进程的启动、切换、调度以及四大组件的启动和管理都需要AMS的支持。
+
+一、AMS的启动
+AMS的是在SystemServer进程中启动的,SystemServer的main方法中实例化了一个SystemServer，并调用了他的run方法。
+
+```java
+// SystemServer
+public static void main(String[] args) {
+    new SystemServer().run();
+}
+// SystemServer
+private void run() {
+    // ...
+
+    // 加载动态库
+    System.loadLibrary("android_servers");
+
+		// ...
+  
+    // Initialize the system context.
+    createSystemContext();
+
+    // 创建SystemServiceManager
+    mSystemServiceManager = new SystemServiceManager(mSystemContext);
+    LocalServices.addService(SystemServiceManager.class, mSystemServiceManager);
+
+    // Start services.
+    try {
+        // 启动引导服务,使用SystemServiceManager启动AMS、PMS、PKMS等
+        startBootstrapServices();
+        // 启动核心服务，包括BatteryService、UsageStatsService、WebViewUpdateService等
+        startCoreServices();
+        // 启动其他服务，包括CameraService、AlarmManagerService、VrManagerService等
+        startOtherServices();
+    }
+    // ...
+
+    // Loop forever.
+    Looper.loop();
+    throw new RuntimeException("Main thread loop unexpectedly exited");
+}
+
+```
+重点看startBootstrapServices中启动AMS的过程
+
+```java
+// SystemServer
+private void startBootstrapServices() {
+    Installer installer = mSystemServiceManager.startService(Installer.class);
+    // Activity manager runs the show.
+    mActivityManagerService = mSystemServiceManager.startService(
+            ActivityManagerService.Lifecycle.class).getService();
+    mActivityManagerService.setSystemServiceManager(mSystemServiceManager);
+    mActivityManagerService.setInstaller(installer);
+    // ...
+}
+
+```
+通过SystemServiceManager的startService方法启动获取AMS，这个方法传进去一个ActivityManagerService.Lifecycle类型的class，Lifecycle是AMS中的静态内部类，继承了SystemService。其源码如下：
+
+```java
+public static final class Lifecycle extends SystemService {
+    private final ActivityManagerService mService;
+
+    public Lifecycle(Context context) {
+        super(context);
+        mService = new ActivityManagerService(context);
+    }
+
+    @Override
+    public void onStart() {
+        mService.start();
+    }
+
+    public ActivityManagerService getService() {
+        return mService;
+    }
+}
+
+```
+可以看到，在Lifecycle的构造方法中实例化了ActivityManagerService，getService方法会返回AMS的实例，并且在onStart方法中启动AMS服务。
+
+接着看startService接收了Lifecycle之后，做了哪些处理：
+
+```java
+// SystemServiceManager
+
+private final ArrayList<SystemService> mServices = new ArrayList<SystemService>();
+
+public <T extends SystemService> T startService(Class<T> serviceClass) {
+    final String name = serviceClass.getName();
+		// ...
+    final T service;
+    try {
+        // 反射获取Lifecycle的构造方法
+        Constructor<T> constructor = serviceClass.getConstructor(Context.class);
+        // 实例化Lifecycle，此时AMS会在Lifecycle构造方法中被实例化
+        service = constructor.newInstance(mContext);
+    } 
+    // ...
+
+    // 将Lifecycle添加到List集合中进行注册
+    mServices.add(service);
+
+    // Start it.
+    try {
+        // 调用Lifecycle的onStart方法，启动AMS服务
+        service.onStart();
+    }
+    return service;
+}
+
+```
+最后启动服务后，startService方法会将这个Lifecycle实例作为返回值返回。再来看SystemServer的startBootServices方法中获取AMS的代码就一目了然了：
+
+mActivityManagerService = mSystemServiceManager.startService(
+        ActivityManagerService.Lifecycle.class).getService();
+SystemServiceManager的startService用来启动多种服务，这里仅仅是拿AMS的启动来分析。
+
+
+## AMS与Activity启动
+
+
+
 ActivityManager是一个和AMS相关连的类，它主要对运行中的Activity进行管理，这些管理工作并不是真正由ActivityManager来处理的，而是交由AMS来处理。ActivityManager中的方法会通过ActivityManagerNative的getDefault方法来得到ActivityManagerProxy，通过ActivityManagerProxy可以和ActivityManagerNative通信。而ActivityManagerNative是一个抽象类，AMS继承了ActivityManagerNative，这些功能是在AMS中实现的。因此，ActivityManagerProxy是AMS的代理类。
 
 以Activity的启动流程为例来分析。Activity的启动过程中会调用Instrumentation的execStartActivity方法，代码如下：
