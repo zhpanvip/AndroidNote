@@ -1,6 +1,32 @@
 AMS是系统的引导服务，应用进程的启动、切换、调度以及四大组件的启动和管理都需要AMS的支持。
 
-一、AMS的启动
+## 一、AMS概述
+
+### AMS的启动
+
+1. SystemServer的main方法中实例化SystemServer，并且调用它的run方法。
+2. run方法中会加载动态库以及启动系统服务，这里就包括AMS的启动。
+   - 通过SystemServiceManager的start方法启动服务，这个方法接受一个SystemService类型的class，通过反射调用SystemService的构造方法来初始化。
+   - Lifecycle是一个位于ActivityManagerService中的静态内部类，继承了SystemService，它内部构造方法中实例化了ActivityManagerService，并将其启动。
+
+### AMS 与 Activity 的启动
+
+1. startActivity会调用Instrumentation的execStartActivity方法
+2. execStartActivity方法中通过ActivityManagerNative的getDefault方法获取AMS的代理类ActivityManagerProxy，然后通过代理的startActivity来向AMS发起一次启动Activity的IPC。
+   - ActivityManagerNative是AMS的父类，它的getDefault方法中会通过ServiceManager获得AMS的Binder，并将这个Binder封装成ActivityManagerProxy作为代理。
+   - ActivityManagerProxy的startActivity其实是通过被代理的Binder向AMS发起请求，以START_ACTIVITY_TRANSACTION作为请求code。
+3. AMS接收到客户端的请求后在onTransact方法中判断请求code是START_ACTIVITY_TRANSACTION则调用自身的startActivity。
+4. AMS的startActivity调用自身的startActivityAsUser将启动交给StackSupervisor来处理。
+5. StackSupervisor中经过多个方法的调用最终会在realStartActivityLocked方法中通过ApplicationThreadProxy代理向客户端发起一次请求code为SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION的IPC，即启动Activity的过程交给了客户端。
+6. 客户端会在ApplicationThreadNative中接收请求，并在onTransact方法中判断code如果是SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION，则调用ApplicationThread的scheduleLaunchActivity来启动Activity。
+
+后续内容详见[ActivityThread](https://github.com/zhpanvip/AndroidNote/wiki/ActivityThread)
+
+
+
+
+## 二、AMS的启动
+
 AMS的是在SystemServer进程中启动的,SystemServer的main方法中实例化了一个SystemServer，并调用了他的run方法。
 
 ```java
@@ -118,7 +144,7 @@ mActivityManagerService = mSystemServiceManager.startService(
 SystemServiceManager的startService用来启动多种服务，这里仅仅是拿AMS的启动来分析。
 
 
-## AMS与Activity启动
+## 三、AMS与Activity启动
 
 
 
