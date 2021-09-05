@@ -49,15 +49,16 @@
 ### 多线程与并发
 
 - [多线程与并发基础](https://github.com/zhpanvip/AndroidNote/wiki/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80)
-- [JMM与volatile关键字](https://github.com/zhpanvip/AndroidNote/wiki/JMM%E4%B8%8Evolatile%E5%85%B3%E9%94%AE%E5%AD%97)
-- [synchronized的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/synchronized%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-- [CAS、Unsafe类以及Automic并发包](https://github.com/zhpanvip/AndroidNote/wiki/CAS%E3%80%81UnSafe%E7%B1%BB%E5%8D%B3Automic%E5%B9%B6%E5%8F%91%E5%8C%85)
-- [AQS的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/AQS%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-- [ReentrantLock的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ReentrantLock%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-- [ThreadLoacal的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ThreadLoacal%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-- [线程池的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+- [JMM与volatile关键字](https://juejin.cn/post/6967739352784830494)
+- [synchronized的实现原理](https://juejin.cn/post/6973571891915128846)
+- [synchronized等待与唤醒机制](https://juejin.cn/post/6980002998361522190)
+- [AQS的实现原理](https://juejin.cn/post/6975435256111300621#heading-6)
+- [ReentrantLock的实现原理](https://juejin.cn/post/6975435256111300621)
+- [ReentrantLock等待与唤醒机制](https://juejin.cn/post/6980655421497278495)
+- [CAS、Unsafe类以及Automic并发包](https://juejin.cn/post/6977993272538955806)
+- [ThreadLoacal的实现原理](https://juejin.cn/post/6986301941269659656)
+- [线程池的实现原理](https://juejin.cn/post/6983213662383112206/)
 - [Java线程中断机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6)
-- [Java等待与唤醒机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%AD%89%E5%BE%85%E4%B8%8E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6)
 
 ## 设计模式
 
