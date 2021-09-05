@@ -14,7 +14,7 @@
 5. 完成ViewRootImpl的实例化后会调用ViewRootImpl的setView方法，setView方法中做了两件重要的事：
    - 首先调用requestLayout 方法post出来一个Message，这个Message一定会被插入到WMS发送来的输入事件之前，即先执行一次View的绘制流程。
    - mWindowSession的addToDisplay方法发起一次IPC，向Session请求添加窗口的操作。这个操作会在执行View的第一次绘制流程前执行，即将Window添加到WMS后才会执行第一次View的绘制流程，然后才会接着执行WMS发送来的输入事件等消息。
-6. WMS端的Session会接受来自APP的addToDisplay请求，并且通过执行自己的onTranscation方法来调用自己的addToDisplay。
+6. WMS端的Session会接受来自APP的addToDisplay请求，并且通过执行自己的onTransact方法来调用自己的addToDisplay。
 7. Session 的 addToDisplay 方法中又调用了WMS的addWindow方法，即最终Window的添加还是交给了WMS。
 8. WMS的addWindow方法中会对要添加的Window进行校验、并获取Window的token以及创建WindowState
    - token标志着Window的分组
