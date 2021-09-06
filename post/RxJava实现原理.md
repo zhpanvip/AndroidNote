@@ -1,3 +1,12 @@
+## RxJava 原理概述
+
+1. RxJava是一个基于变形的观察者模式实现的，RxJava中的观察者模式可以通过观察者创建另一个观察者，从而实现链式调用。下面以Observable的create操作符为例分析。
+2. create操作符接收一个ObservableOnSubscribe类型的匿名内部类，在回调方法subscribe中可以发射一个事件。
+3. create方法中会返回一个ObservableCreate的被观察者，并且将ObservableOnSubscribe作为参数传给了ObservableCreate。
+4. ObservableCreate继承自Observable，并重写了subscribeActual方法，subscribeActual方法中的参数是一个观察者，在这个方法中先创建了一个CreateEmitter发射器，并调用了观察者的onSubscribe方法。接着调用了ObservableOnSubscribe的subscribe方法，在第2步中就是在这个方法的回调中发射的事件，这里事件才会被真正发射。现在需要搞清楚ObservableCreate中的这个subscribeActual方法是在哪里被调用的。
+5. 在create方法创建ObservableCreate后，便可以调用subscribe方法发起观察者的订阅了，subscribe方法接受一个Observer的观察者对象，并且在这个subscribe方法中调用了subscribeActual。也就是订阅之后调用了subscribeActual，进而调用了观察者的onSubscribe，ObservableOnSubscribe的subscribe发射事件。
+6. 其他的操作符与上述流程类似，只不过处理的事情不同。
+
 了解RxJava前可以先了解[观察者模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)，观察者模式一般是有多个观察者和一个被观察者组成，观察者订阅被观察者，当被观察者发生改变时，通知观察者。而RxJava是基于变形的观察者模式实现的。RxJava中的观察者模式的特殊点在于它有多个被观察者和一个观察者。
 
 ## 一、RxJava使用
@@ -72,16 +81,16 @@ static <T, R> R apply(@NonNull Function<T, R> f, @NonNull T t) {
 onObservableAssembly 是RxJavaPlugins中的静态成员变量，通过 setOnObservableAssembly 方法被赋值，代码如下：
 
 ```java
-public final class RxJavaPlugins {
+public final class RxJavaPlugins {  
   static volatile Function<? super Observable, ? extends Observable> onObservableAssembly;
-
+  
   public static void setOnObservableAssembly(@Nullable Function<? super Observable, ? extends Observable> onObservableAssembly) {
     if (lockdown) {
         throw new IllegalStateException("Plugins can't be changed anymore");
     }
     RxJavaPlugins.onObservableAssembly = onObservableAssembly;
   }
-}
+}  
 ```
 
 在使用RxJava时可以调用 setOnObservableAssembly 这个方法为 onObservableAssembly 赋值，如下代码：
@@ -147,10 +156,10 @@ public final class ObservableCreate<T> extends Observable<T> {
             parent.onError(ex);
         }
     }
-}
+}  
 ```
 
-可以看到，通过构造方法将 source 赋值给了 ObservableCreate 的成员变量。接着，在 subscribeActual 方法中先调用了 source 的onSubscribe方法，接着调用了 subscribe 方法。subscribe 方法被调用意味着 ` emitter.onNext(1);`这句代码会被执行，即执行CreateEmitter的onNext方法。CreateEmitter 的onNext代码如下：
+可以看到，通过构造方法将 source 赋值给了 ObservableCreate 的成员变量。接着，在 subscribeActual 方法中先调用了 观察者observer 的onSubscribe方法，接着调用了 subscribe 方法。subscribe 方法被调用意味着 ` emitter.onNext(1);`这句代码会被执行，即执行CreateEmitter的onNext方法。CreateEmitter 的onNext代码如下：
 
 ```java
 @Override
@@ -199,11 +208,11 @@ public final void subscribe(Observer<? super T> observer) {
     ObjectHelper.requireNonNull(observer, "observer is null");
     try {
 				// ...
-
+      
 				// 调用 subscribeActual
         subscribeActual(observer);
-
-    }
+      
+    } 
     // ... 省略catch相关代码
 }
 ```
@@ -214,7 +223,7 @@ subscribe 方法中，最重要的一行代码是调用了 subscribeActual 方�
 
 
 
-## 三、RxJava的链式调用
+## 四、RxJava的链式调用
 
 第二章的内容，其实就是一个标准的观察者模式。但是RxJava的功能远不止这么简单。链式调用Observable的操作符才是Rxjava的精髓。如何实现的？
 
@@ -248,6 +257,161 @@ observableMap.subscribe(new Consumer<String>() {
 ```
 
 上一章已经分析了ObservableCreate的订阅代码，ObservableMap与其如出一辙，这里不再赘述。
+
+
+
+## 五、背压
+
+背压是指在异步操作中，上游发送数据的速度快于下游处理数据的速度，下游来不及处理，导致缓冲区溢出、的事件阻塞，从而引起的事件丢失、Error、OOM等问题。
+
+### 1.Rxjava1 中的背压
+
+举个背压的例子，主线程中没1ms发送一个事件，子线程中1s处理一个事件，Rxjava1 的代码实现如下：
+
+```java 
+//被观察者在主线程中，每1ms发送一个事件
+Observable.interval(1, TimeUnit.MILLISECONDS)
+        .observeOn(Schedulers.newThread())
+        //观察者在子线程中每1s处理一个事件
+        .subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Log.w("tag", "---->" + aLong);
+            }
+        });
+```
+
+上述代码中运行就会发生异常，异常信息如下：
+
+![]( https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/11/1696aa871b285b57~tplv-t2oaga2asx-watermark.awebp )
+
+出现了背压的情况，抛出了MissingBackpressureException异常。这是因为Rxjava1默认的缓存池大小只有16，当缓存的事件超出16时就会出现MissingBackpressureException。
+
+```java
+Observable.create(new Observable.OnSubscribe<String>() {
+  @Override
+  public void call(Subscriber<? super String> subscriber) {
+    for (int i = 0; i < 17; i++) {
+      Log.w("tag", "send ----> i = " + i);
+      subscriber.onNext("i = "+i);
+    }
+  }
+}).subscribeOn(Schedulers.newThread())
+    //将观察者的工作放在新线程环境中
+    .observeOn(Schedulers.newThread())
+    //观察者处理每1000ms才处理一个事件
+    .subscribe(new Action1<String>() {
+  @Override
+  public void call(String value) {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    Log.w("tag", "---->" + value);
+  }
+});
+```
+
+得到如下结果：
+
+![]( https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/11/1696aa871b383b6a~tplv-t2oaga2asx-watermark.awebp )
+
+插入到第17个时发生了MissingBackpressureException. 
+
+### Rxjava1 背压操作符
+
+在Rxjava1中其实已经支持了背压的处理，给我们提供了onBackpressureBuffer和onBackpressureDrop操作符。即两种背压的处理策略。
+
+onBackpressureBuffer的原理是将缓存池的大小改为Long.MAX_VALUE，也可以自己指定缓存池的大小。加上onBackpressureBuffer操作符后，运行下面的代码便不会抛出MissBackpressException。
+
+```java
+  Observable.create(new Observable.OnSubscribe<String>() {
+  @Override
+  public void call(Subscriber<? super String> subscriber) {
+    for (int i = 0; i < 100; i++) {
+      Log.w("tag", "send ----> i = " + i);
+      subscriber.onNext("i = "+i);
+    }
+  }
+}).onBackpressureBuffer(100)
+ .subscribeOn(Schedulers.newThread())
+    .observeOn(Schedulers.newThread())
+    .subscribe(new Action1<String>() {
+  @Override
+  public void call(String value) {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    Log.w("tag", "---->" + value);
+  }
+});
+```
+
+而如果改为onBackpressureDrop操作符，也是能正常运行的，只不过存放不下的事件会被丢弃。
+
+
+
+### 2. RxJava2中的背压
+
+Rxjava2中新增了一个被观察者Flowable用来专门支持背压，默认缓存大小为128，并且它的所有操作符都支持背压。并且可以在create时指定背压策略，如下：
+
+```java
+Flowable.create(new FlowableOnSubscribe<String>() {
+      @Override
+      public void subscribe(FlowableEmitter<String> emitter) throws Exception {
+        for (int i = 0;i < 1000000; i++) {
+          emitter.onNext("i = "+i);
+        }
+      }
+    }, BackpressureStrategy.ERROR) // 背压策略，抛出异常
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<String>() {
+      @Override
+      public void accept(String s) throws Exception {
+        Log.e("tag","----> "+s);
+      }
+    });
+```
+
+背压策略支持下面几种可选值：
+
+```java
+public enum BackpressureStrategy {
+  // 不指定背压策略
+  MISSING,
+  // 出现背压就抛出异常
+  ERROR,
+  // 指定无限大小的缓存池，此时不会出现异常，但无限制大量发送会发生OOM
+  BUFFER,
+  // 如果缓存池满了就丢弃掉之后发出的事件
+  DROP,
+  // 在DROP的基础上，强制将最后一条数据加入到缓存池中
+  LATEST
+}
+```
+
+上边的代码指定了ERROR策略，那么在缓存满时仍然会抛出MissingBackpressException。
+
+背压内容来源：https://juejin.cn/post/6844903794061377549
+
+
+
+
+
+
+
+
+
+
 
 
 
