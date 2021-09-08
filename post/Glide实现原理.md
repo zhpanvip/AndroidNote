@@ -1,22 +1,29 @@
+## Gilde源码分析
 
-## 1.Glide.with方法分析
-```
+### 1.Glide.with方法分析
+
+```java
   RequestManager requestManager = Glide.with((Activity) this)
 ```
-### （1）Glide生命周期管控概述
+
+#### （1）Glide生命周期管控概述
+
 Glide的With方法会创建一个空白的Fragment来监听Activity的生命周期。因为空白Fragment绑定在Activity上，所有空白Fragment能够感知到Activity的生命周期变化，当Fragment感知到Activity生命周期变化后则会回调ActivityFragmentLifecycle中的生命周期方法，ActivityFragmentLifecycle的生命周期会遍历lifecycleListeners，并分别调用LifecycleListener的生命周期方法。而RequestManager实现了LifecycleListener，所以它的的生命周期方法会被调用。接着，在RequestManager中会调用TargetTracker的生命周期，而TargetTracker内部是一个Target的集合，Target实现了LifecycleListener,在TargetTracker的生命周期方法中会遍历集合执行所有LifecycleListener的生命周期，而在Glide中像ImageViewTarget等许多类都实现了Target接口，因此，这些类生命周期的方法都会被调用。Glide以此实现生命周期管控。
 
 调用with方法时内部会根据是否是主线程进行不同方式的管理：
+
 - 如果是子线程，那么作用域是Application，也就是Glide加载的图片不会跟随Activity的销毁而回收，而是会与APP的生命周期同步。
 - 如果是主线程，因为with的重载方法比较多，因此又需要分两种情况讨论：
 
-    - 如果with的参数是View/Activity/Framgnet,那么会生成空白的Fragment来监控Activity的生命周期;
+  - 如果with的参数是View/Activity/Framgnet,那么会生成空白的Fragment来监控Activity的生命周期;
 
-    - 如果with的参数是Application或者ServiceContext，那么与在子线程中调用with一样，作用域都会是Application。
+  - 如果with的参数是Application或者ServiceContext，那么与在子线程中调用with一样，作用域都会是Application。
 
-### (2)Glide内部的空白Fragment是如何生成的？
+#### （2）Glide内部的空白Fragment是如何生成的？
+
 在Glide的with方法中最终都会调用RequestManagerRetriever的get方法
-```
+
+```java
  // RequestManagerRetriever
 
  @NonNull
@@ -88,9 +95,10 @@ Glide的With方法会创建一个空白的Fragment来监听Activity的生命周�
     return current;
   }
 ```
+
 可以看到最终在getSupportRequestManagerFragment方法中实例化了一个SupportRequestManagerFragment。SupportRequestManagerFragment中持有了Lifecycle，并且会在SupportRequestManagerFragment的生命周期方法中回到Lifecycle的生命周期方法：
 
-```
+```java
 public class SupportRequestManagerFragment extends Fragment {
 
   private final ActivityFragmentLifecycle lifecycle;
@@ -128,9 +136,10 @@ public class SupportRequestManagerFragment extends Fragment {
 ```
 
 ### （3）Glide如何保证在同一个Activity中多次调用with方法只生成一个Fragment的？
+
 在RequestManagerRetriever的getSupportRequestManagerFragment方法中生成Fragment的时候采用了双重校验来保证在同一个Activity中只会生成一个空白Fragment，其实现代码如下：
 
-```
+```java
 @NonNull
   private SupportRequestManagerFragment getSupportRequestManagerFragment(
       @NonNull final FragmentManager fm, @Nullable Fragment parentHint) {
@@ -149,23 +158,26 @@ public class SupportRequestManagerFragment extends Fragment {
     return current;
   }
 ```
+
 首先，第一重校验会通过RequestManagerRetriever中的pendingSupportRequestManagerFragments集合去获取Fragment，如果不为空说明已经创建了Fragment，直接返回即可。如果是空的话则会实例化Fragment，并将其存储到pendingSupportRequestManagerFragments集合中，然后通过commitAllowingStateLoss提交Fragment事务。
 但是由于commitAllowingStateLoss是通过Handler实现的，不会立马执行，因此经过第一重校验后还是可能会出现重复Fragment的情况，因此Glide又进行了第二重校验，即通过handler.obtainMessage(ID_REMOVE_SUPPORT_FRAGMENT_MANAGER, fm).sendToTarget();这句代码让commitFragment立即执行，以此保证了Fragment不会生成多个。
 
-### （4）Glide生命周期的管控：
+#### （4）Glide生命周期的管控：
 
 定义了Lifecycle接口，通过Lifecycle来管理LifecycleListener。
-```
+
+```java
  public interface Lifecycle{
    void addLifecycleListener(LifecycleListener listener);
    void removeLifecycleListener(LifecycleListener listener);
  }
 ```
+
 ApplicationLifecycle与ActivityFragmentLifecycle都实现了Lifecycle接口。
 
 ApplicationLifecycle表示生命周期作用域为Application，对应了子线程调用with与with参数为ApplicationContext/ServiceContext的情况。
 
-```
+```java
 // ApplicationLifecycle没有通过空白Fragment监听生命周期，如果是此类情况，则资源只有在APP被杀死的时候才会被释放
 public class ApplicationLifecycle implements Lifecycle{
   @Override
@@ -180,11 +192,13 @@ public class ApplicationLifecycle implements Lifecycle{
   }
 }
 ```
+
 由于这种情况资源的生命周期等同于APP的生命周期，因此过多此种情况必然引起APP性能问题，要避免在子线程中使用Glide或者with中传入AppcationContext/ServiceContext.
 
 非Application作用域，这里会生成一个空白Fragment来监听生命周期
 ActivityFragmentLifecycle也实现Lifecycle,它代表的作用域为Activity，ActivityFragmentLifecycle中维护了一个LifecycleListener的集合，同时还添加了几个生命周期方法，在生命周期方法中遍历lifecycleListeners集合并调用它的生命周期方法：
-```
+
+```java
 class ActivityFragmentLifecycle implements Lifecycle {
   private final Set<LifecycleListener> lifecycleListeners =
       Collections.newSetFromMap(new WeakHashMap<LifecycleListener, Boolean>());
@@ -234,6 +248,7 @@ class ActivityFragmentLifecycle implements Lifecycle {
 ```
 
 LifecycleListener同样也是一个接口，同样管理了三个生命周期方法：
+
 ```
  public interface LifecycleListener{
    void onStart();
@@ -243,7 +258,8 @@ LifecycleListener同样也是一个接口，同样管理了三个生命周期方
 ```
 
 实现LifecycleListener的类是RequestManager，RequestManager中部分代码如下：
-```
+
+```java
 /**
    * Lifecycle callback that registers for connectivity events (if the
    * android.permission.ACCESS_NETWORK_STATE permission is present) and restarts failed or paused
@@ -283,9 +299,10 @@ LifecycleListener同样也是一个接口，同样管理了三个生命周期方
     glide.unregisterRequestManager(this);
   }
 ```
+
 在这三个方法中，生命周期转移到了TargetTracker，TargetTracker是一个集合类，内部维护了一个Target的集合，Target实现了LifecycleListener接口，TargetTracker的源码如下：
 
-```
+```java
 public final class TargetTracker implements LifecycleListener {
   private final Set<Target<?>> targets =
       Collections.newSetFromMap(new WeakHashMap<Target<?>, Boolean>());
@@ -329,17 +346,19 @@ public final class TargetTracker implements LifecycleListener {
   }
 }
 ```
+
 由此生命周期的方法最终交给了Target，实现Target的类有ImageViewTarget、CustomViewTarget等，
 
 
-## Glide#load方法分析
+### Glide#load方法分析
 
-```
+```java
 RequestBuilder<Drawable> requestBuilder = requestManager.load("url");
 ```
+
 Glide的load方法很简单，
 
-```
+```java
 // RequestManager
 
 public RequestBuilder<Drawable> load(@Nullable String string) {
@@ -347,7 +366,7 @@ public RequestBuilder<Drawable> load(@Nullable String string) {
 }
 ```
 
-```
+```java
 // RequestBuilder 
 
 public RequestBuilder<TranscodeType> load(@Nullable String string) {
@@ -365,10 +384,12 @@ private RequestBuilder<TranscodeType> loadGeneric(@Nullable Object model) {
   }
 ```
 
-## Glide#into方法
-```
+### Glide#into方法
+
+```java
 requestBuilder.into(imageView);
 ```
+
 Glide的into方法非常复杂，这里无法详细分析，只能写出大致流程，
 以load(String url)为例：
 
@@ -386,7 +407,7 @@ Glide的into方法非常复杂，这里无法详细分析，只能写出大致�
 - 12.构建内存缓存
 - 13.最终回到ImageViewTarget的子类DrawableImageViewTarget显示图片
 
-## Glide缓存机制
+### Glide缓存机制
 
 Glide采用四级缓存机制，分别为活动缓存、LRU内存缓存、LRU磁盘缓存、访问HTTP/本地图片。Glide在缓存图片时会根据图片的width、height、url以及签名等信息经过base64编码后生成一个EngineKey，作为缓存查找的key.Glide加载一个图片的流程如下：
 
@@ -400,10 +421,12 @@ Glide采用四级缓存机制，分别为活动缓存、LRU内存缓存、LRU磁
 
 5.当Activity结束的时候，会将活动缓存资源全部移动到LRU内存缓存。
 
-## 什么是LRU算法？
+## Glide 常见面试题
+
+### 1. 什么是LRU算法？
+
 LRU为最近最少使用算法，当put的时候超过了maxSize，则会移除最少的一个元素，并将当前元素插入。LRUCache内部使用LinkedHashMap实现。LinkedHashMap构造方法中有一个按照访问排序的参数，可以直接实现LRU。
 
-## Glide已经有了LRU内存缓存，为什么还要在加一个活动缓存？
+### 2. Glide已经有了LRU内存缓存，为什么还要在加一个活动缓存？
+
 因为LRUCache会在内存不足时将最近最好使用的一个资源移除掉，如果Activity正在显示这个图片那么就会造成崩溃。因此，又添加了一个活动缓存。活动缓存是一个非LRU缓存，通过HashMap实现。且一个资源图片只会在活动缓存和LRU内存缓存仅保留一份。
-
-
