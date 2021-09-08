@@ -103,7 +103,7 @@
 - [ThreadLocal的实现原理](/post/ThreadLoacal%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [HandlerThread是什么？](/post/HandlerThread%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [IntentService是什么？](/post/IntentService%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
-- [IdleHandler是什么？](/post/Handler%E7%9B%B8%E5%85%B3.md#15idlehandler%E6%98%AF%E4%BB%80%E4%B9%88)
+- [IdleHandler是什么？](post/IdleHandler.md)
 
 ### Framework
 

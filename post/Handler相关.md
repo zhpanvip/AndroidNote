@@ -409,12 +409,3 @@ MessageQueue 类中调用 nativeWake 方法主要有下列几个时机：
 
 可以发现，主要是在可能不再需要阻塞的情况下进行唤醒。(比如加入了一个更早的任务，那继续阻塞显然会影响这个任务的执行)
 
-## 12.了解ThreadLocal的实现原理吗？
-
-[ThreadLocal实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ThreadLoacal%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-
-## 13.HandlerThread是什么？
-
-## 14.IntentService是什么？
-
-## 15.IdleHandler是什么？

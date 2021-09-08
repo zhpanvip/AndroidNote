@@ -101,9 +101,9 @@
 - [Handler的同步屏障是什么？](https://github.com/zhpanvip/AndroidNote/wiki/Handler%E7%9B%B8%E5%85%B3#10handler%E7%9A%84%E5%90%8C%E6%AD%A5%E5%B1%8F%E9%9A%9C%E6%98%AF%E4%BB%80%E4%B9%88)
 - [Handler的阻塞唤醒机制是什么？](https://github.com/zhpanvip/AndroidNote/wiki/Handler%E7%9B%B8%E5%85%B3#11handler%E7%9A%84%E9%98%BB%E5%A1%9E%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6%E6%98%AF%E4%BB%80%E4%B9%88)
 - [ThreadLocal的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ThreadLoacal%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+- [IdleHandler是什么？](https://github.com/zhpanvip/AndroidNote/wiki/IdleHandler)
 - [HandlerThread是什么？](https://github.com/zhpanvip/AndroidNote/wiki/HandlerThread%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [IntentService是什么？](https://github.com/zhpanvip/AndroidNote/wiki/IntentService%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-- [IdleHandler是什么？](https://github.com/zhpanvip/AndroidNote/wiki/Handler%E7%9B%B8%E5%85%B3#15idlehandler%E6%98%AF%E4%BB%80%E4%B9%88)
 
 ### Framework
 
