@@ -1,16 +1,32 @@
 
 
-## [屏幕刷新机制](post/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6.md)
+## [屏幕刷新机制](https://github.com/zhpanvip/AndroidNote/wiki/%E5%B1%8F%E5%B9%95%E5%88%B7%E6%96%B0%E6%9C%BA%E5%88%B6)
 
 ## 一、Choreographer概述
+1. ViewRootImpl的构造方法中会调用Choreographer的getInstance,并将Choreographer做成成员变量进行保存。
 
-1. 在ViewRootImpl的setView方法中会调用requestLayout，并且通过WindowSession的addToDisplay与WMS交互。
-2. requestLayout中会检查线程是否是UI线程，然后调用scheduleTraversals向Choreographer发送Runnable。
-3. scheduleTraversals会首先通过MessageQueue的postSyncBarrier发送一个同步屏障消息，然后通过Choreographer.postCallback发送一个Runnable等待Vsync信号的到来。
-4. 等到Vsync到来时会通过FrameDisplayEventReceiver调用onVsync，并且会发送出来一个异步Message。
-5. MessageQueue的next方法会被同步屏障阻塞，优先执行异步消息，因此这里拿到异步消息后就会执行FrameDisplayEventReceiver的run方法，进而调用doFrame开始一帧的绘制工作。
-6. doFrame方法中会做很多事情，比如计算掉帧的相关逻辑、记录帧绘制信息、执行Callback
-7. doFrame中会执行很多Callback，例如CALLBACK_ANIMATION、CALLBACK_TRAVERSAL、CALLBACK_INPUT。CALLBACK_TRAVERSAL回调调用栈会执行scheduleTraversals方法开始View的绘制，CALLBACK_INPUT调用栈会执行ViewRootImpl.ConsumeBatchedInputRunnable开启事件的分发流程。
+2. Choreographer的getInstance则是从sThreadInstance中取出Choreographer
+
+3. sThreadInstance是一个ThreadLocal类型的静态成员变量，ThreadLocal初始化值实例化了一个Choreographer。
+
+4. Choreographer的构造方法中会实例化一个Handler，然后根据是否使用Vsync来创建FrameDisplayEventReceiver，接着创建一个容量为4的CallbackQueues数组，并且实例化四个Callback存入数组中。
+
+   - CallbackQueues数组用于保存4中不同类型的Callback，分别为输入类型的callback、动画类型的callback、绘制类型的callback以及提交类型的callback
+   - Vsync的注册、申请、接收都是通过FrameDisplayEventReceiver实现的，注册之后会监听SurfaceFlinger的传来的Vsync事件，在收到Vsync事件后回调onVsync
+
+   - onVsync中通过Handler将FrameDisplayEventReceiver自身添加到Message中post了出去，
+   - FrameDisplayEventReceiver实现了Runnable,因此执行Message时会执行它的run方法
+   - 在run方法中调用了doFrame开启帧绘制流程。
+
+5. doFrame中主会进行掉帧逻辑计算、记录帧绘制的信息、然后执行doCallback。
+
+   - Choreographer.doFrame() 处理 Choreographer 的第一个 callback ： input
+   - Choreographer.doFrame() 处理 Choreographer 的第二个 callback ： animation
+   - Choreographer.doFrame() 处理 Choreographer 的第三个 callback ： insets animation
+   - Choreographer.doFrame() 处理 Choreographer 的第四个 callback ： traversal
+
+6. 开始执行View的绘制流程
+
 
 
 ## 二、Choreographer详解

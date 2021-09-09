@@ -1,4 +1,23 @@
-## IMS
+## 一、IMS概述
+
+1. IMS是处理各种用户操作而抽象出来的一个服务，主要作用是用于输入事件的采集和分发。
+2. 在IMS中会创建一个EventHub，EventHub利用epoll和inotify机制监听设备事件，包括设备插拔、触摸事件等。
+3. 在IMS中还会创建一个InputManager，InputManager持有EventHub。
+4. InputManager实例化时会创建InputReader对象和InputReaderThread类似的Loop线程，loop线程会通过EventHub的getEvents获取输入事件。
+5. InputManager实例化的时候还会创建一个InputDispatcher对象负责事件的派发。在InputReader中持有InputDispatcher,事件读取完后会通过flush通知InputDispatcher.
+6. InputDispatchert是一个native层的Looper，当有Input事件到来时，就唤醒并派发事件，否则会睡眠等待。
+7. 事件派发是通过InputDispatcher的dispatchOnceInnerLocked方法处理的，这个方法中会查找目标Window，并将事件派发到目标窗口。
+8. Android系统支持多块屏幕，每块屏幕被抽象成一个DisplayContent，它内部维护了一个WindowList，用于记录所有窗口。WMS会通过setInputWindows所有窗口传递个IMS。
+9. 在查找目标窗口时会根据点击位置、窗口的z-order等特性来查找。
+10. 找到窗口后需要将事件派发到目标窗口，因为目标窗口时运行在APP进程，所以是一个IPC。这里使用的是Socket进行IPC
+11. Socket的创建是在ViewRootImpl添加窗口时。
+12. APP端将Socket添加到Looper线程的emoll数组中，有消息到来时Looper被唤醒并获取事件内容。
+13. 之后将事件进一步封装成InputEvent的java层对象，并交由InputEventReceiver的dispatchInputEvent处理。
+
+
+
+
+## 二、IMS详解
 
 IMS是Android为了处理各种用户操作而抽象的一个服务，自身是一个Binder服务实体，在SystemServer进程启动时被初始化并注册到ServiceManager中。这个服务主要是用来提供一些输入设备信息的作用，作为Binder服务的作用比较小
 
@@ -376,7 +395,7 @@ status_t NativeInputEventReceiver::consumeEvents(JNIEnv* env,
 
 触摸事件最终被封装成InputEvent，并通过InputEventReceiver的dispatchInputEvent（WindowInputEventReceiver）进行处理。
 
-后续事件的传递过程参看[ViewRootImpl与事件分发](post/ViewRootImpl.md#%E4%B8%89viewrootimpl%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91)
+后续事件的传递过程参看[ViewRootImpl与事件分发](ViewRootImpl.md#%E4%B8%89viewrootimpl%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91)
 
 
 
