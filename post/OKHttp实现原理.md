@@ -2,19 +2,19 @@
 
 
 
-```java
+```kotlin
 OkHttpClient client = new OkHttpClient();
 Request request = new Request.Builder()
                 .get()
                 .url("https:www.baidu.com")
                 .build();
-
+// 通过client的newCall实例化一个RealCall
 Call call = client.newCall(request);
 
-// 同步调用
+// 通过RealCall发起同步请求
 Response response = call.execute();
 
-// 或者异步调用
+// 通过RealCall发起异步请求
 call.enqueue(new Callback() {
     @Override
     public void onFailure(Call call, IOException e) {
@@ -36,15 +36,35 @@ call.enqueue(new Callback() {
 ### 1.通过newCall获得RealCall对象
 
 ```kotlin
+// OkHttpClient.kt
+
+// 实例化一个ReallCall，注意参数将OkHttpClient自身传给了RealCall
 override fun newCall(request: Request): Call = RealCall(this, request, forWebSocket = false)
 ```
 
-所有execute方法和enqueue调用的都是RealCall中的代码，如下：
+newCall函数实例化了一个RealCall，并将OkHttpClient自身与Response作为参数传递给了RealCall。RealCall的构造函数如下
+
+```kotlin
+class RealCall(
+  val client: OkHttpClient,
+  /** The application's original request unadulterated by redirects or auth headers. */
+  val originalRequest: Request,
+  val forWebSocket: Boolean
+) : Call {
+	// ...
+
+}
+```
+
+
+
+所以execute函数和enqueue函数的调用的都是RealCall中的代码，如下：
 
 
 
 ```kotlin
-// RealCall
+// RealCall.kt
+
 override fun execute(): Response {
   check(executed.compareAndSet(false, true)) { "Already Executed" }
 
@@ -68,15 +88,24 @@ override fun enqueue(responseCallback: Callback) {
 }
 ```
 
-RealCall中不管是execute方法还是enqueue方法，最终都是通过Dispatcher发起的。
+RealCall中不管是execute函数还是enqueue函数，最终都是通过OkHttpClient的Dispatcher发起的。
 
 
 
 ### 2.分发器--Dispatcher
 
-Dispatcher可以翻译为分发器，是OKHttp中非常重要的一个角色。它的主要作用是用来调配请求任务的，Dispatcher会根据情况决定任务是被放到ready队列还是放到running队列。同时，还会根据条件将任务从ready队列调入running队列。Dispatcher类的代码结构如下：
+Dispatcher可以翻译为分发器，是OKHttp中非常重要的一个角色。它是OkHttpClient中的一个成员变量,如下：
 
+```kotlin
+open class OkHttpClient internal constructor(
+  builder: Builder
+) : Cloneable, Call.Factory, WebSocket.Factory {
 
+  @get:JvmName("dispatcher") val dispatcher: Dispatcher = builder.dispatcher
+}    
+```
+
+它的主要作用是用来调配请求任务的，Dispatcher会根据情况决定任务是被放到ready队列还是放到running队列。同时，还会根据条件将任务从ready队列调入running队列。Dispatcher类的代码结构如下：
 
 ```kotlin
 class Dispatcher constructor() {
@@ -85,8 +114,7 @@ class Dispatcher constructor() {
   // 同一个Host能同时发起的最大请求数
   var maxRequestsPerHost = 5
   // 线程池
-  private var executorServiceOrNull: ExecutorService? = null
-
+  val executorService: ExecutorService
 
   /** 异步调用的ready任务队列 */
   private val readyAsyncCalls = ArrayDeque<AsyncCall>()
@@ -104,27 +132,32 @@ class Dispatcher constructor() {
 }
 ```
 
+上述代码中的注释给出了Dispatcher中几个比较重要的参数
+
+- **maxRequests** 表示OkHttp能够同时发起的最大请求数,即在OKHttp中同一时刻最大支持64个请求同时执行。
+- **maxRequestsPerHost** 表示同一个Host能发起的最大请求数，即同一个Host，在同一时刻最大支持5个请求同时执行。
+- **executorServiceOrNull** OkHttp的线程池。
+- **readyAsyncCalls** 异步调用时ready状态的任务队列，所有异步请求都会事先加入到ready队列，然后根据running队列中的个数来决定是否将其移入到running队列。
+- **runningAsyncCalls** 异步调用时running状态的任务队列
+
 接下来以异步调用enqueue方法为例，来分析源码
 
 ```kotlin
-// Dispatcher
+// Dispatcher.kt
 
 // 这里的AsyncCall是在RealCall的enqueue方法中实例化出来的
 internal fun enqueue(call: AsyncCall) {
   synchronized(this) { // 保证线程安全
     // 先将任务加入准备队列
     readyAsyncCalls.add(call)
-    if (!call.call.forWebSocket) {
-      val existingCall = findExistingCallWithHost(call.host)
-      if (existingCall != null) call.reuseCallsPerHostFrom(existingCall)
-    }
+    // ...
+    // 执行任务的主流程
+    promoteAndExecute()
   }
-  // 执行任务的主流程
-  promoteAndExecute()
-}
+} 
 ```
 
-在promoteAndExecute方法中会根据条件将要执行的任务从ready队列移到，代码如下：
+enqueue函数中先将任务添加到了ready队列中，然后调用promoteAndExecute开始执行任务。在promoteAndExecute方法中会根据条件将要执行的任务从ready队列移到，代码如下：
 
 ```kotlin
 // Dispatcher
@@ -141,7 +174,7 @@ private fun promoteAndExecute(): Boolean {
       if (runningAsyncCalls.size >= this.maxRequests) break // Max capacity.
       // 如果当前正在这个host的请求数量大于maxRequestsPerHost，则跳过该任务，遍历后边任务
       if (asyncCall.callsPerHost.get() >= this.maxRequestsPerHost) continue // Host max capacity.
-
+			// 将任务从队列中移除
       i.remove()
       asyncCall.callsPerHost.incrementAndGet()
       executableCalls.add(asyncCall)
@@ -167,8 +200,6 @@ private fun promoteAndExecute(): Boolean {
 通过上述两个限制条件后，任务最终会被添加到executableCalls和runningAsyncCalls中等待执行。
 
 最后，遍历executableCalls集合并调用RealCall的executeOn开始执行任务。
-
-
 
 RealCall的executeOn方法如下：
 
@@ -197,7 +228,7 @@ fun executeOn(executorService: ExecutorService) {
 }
 ```
 
-上述方法中通过executorService将任务交给线程池来执行。而executorService是在Dispatcher中被初始化的：
+上述方法中通过executorService将任务交给线程池来执行。而executorService线程池是在Dispatcher中被初始化的：
 
 
 
@@ -228,7 +259,7 @@ override fun run() {
       var signalledCallback = false
       timeout.enter()
       try {
-        // 发起请求
+        // 通过通过拦截器使用责任链模式获取服务器响应数据。
         val response = getResponseWithInterceptorChain()
         signalledCallback = true
         // 请求成功后回调结果
@@ -245,7 +276,15 @@ override fun run() {
 }
 ```
 
-接下来，请求被交给了getResponseWithInterceptorChain方法来执行
+接下来，请求被交给了getResponseWithInterceptorChain函数来执行，getResponseWithInterceptorChain函数中则是通过责任链模式来获取服务器响应数据的。
+
+### 2. OkHttp中的责任链模式
+
+责任链模式参考：[责任链模式](/责任链模式.md)
+
+上一节中Dispatcher将请求最终交给了Intercepter，最终的请求也是在Intercept中执行的。Intercepter在OkHttp中是另一个重要角色。本节就来详细的分析OkHttp的拦截器。
+
+看下getResponseWithInterceptorChain
 
 ```kotlin
 // RealCall
@@ -261,7 +300,7 @@ internal fun getResponseWithInterceptorChain(): Response {
   interceptors += BridgeInterceptor(client.cookieJar)
   // 缓存拦截器
   interceptors += CacheInterceptor(client.cache)
-  // 链接拦截器
+  // 连接拦截器
   interceptors += ConnectInterceptor
   
   if (!forWebSocket) {
@@ -300,78 +339,115 @@ internal fun getResponseWithInterceptorChain(): Response {
 }
 ```
 
-getResponseWithInterceptorChain方法中的代码很有意思，首先创建了一个interceptors的集合，并将一系列的intercepter添加到了集合中，然后通过责任链模式依次执行所有intercepter的intercept方法。具体代码可以看RealInterceptorChain类的实现。
-
-
-
-### 2.拦截器--Intercepter
-
-上一节中Dispatcher将请求最终交给了Intercepter，最终的请求也是在Intercept中执行的。可见Intercepter在OkHttp中是另一个重要角色。本节就来详细的分析OkHttp的拦截器。
-
-
+getResponseWithInterceptorChain方法中的代码很有意思，首先创建了一个interceptors的集合，并将一系列的intercepter添加到了集合中，然后通过责任链模式依次执行所有intercepter的intercept方法。
 
 Interceptor是一个接口，内部有一个intercept方法，以及一个Chain的内部接口：
 
 ```kotlin
+// 类比责任链模式中的Handler
+
 fun interface Interceptor {
   @Throws(IOException::class)
+  // 类比责任链模式中的process方法
   fun intercept(chain: Chain): Response
 
-  companion object {
-    /**
-     * Constructs an interceptor for a lambda. This compact syntax is most useful for inline
-     * interceptors.
-     *
-     * ```
-     * val interceptor = Interceptor { chain: Interceptor.Chain ->
-     *     chain.proceed(chain.request())
-     * }
-     * ```
-     */
-    inline operator fun invoke(crossinline block: (chain: Chain) -> Response): Interceptor =
-      Interceptor { block(it) }
-  }
-
+  // ...
+	
   interface Chain {
     fun request(): Request
 
     @Throws(IOException::class)
     fun proceed(request: Request): Response
 
-    /**
-     * Returns the connection the request will be executed on. This is only available in the chains
-     * of network interceptors; for application interceptors this is always null.
-     */
-    fun connection(): Connection?
-
-    fun call(): Call
-
-    fun connectTimeoutMillis(): Int
-
-    fun withConnectTimeout(timeout: Int, unit: TimeUnit): Chain
-
-    fun readTimeoutMillis(): Int
-
-    fun withReadTimeout(timeout: Int, unit: TimeUnit): Chain
-
-    fun writeTimeoutMillis(): Int
-
-    fun withWriteTimeout(timeout: Int, unit: TimeUnit): Chain
+		// ...
   }
 }
 ```
 
+Interceptor中intercept函数负责请求的处理。还有一个内部接口Chain，它是事件处理链的接口，实现代码在RealInterceptorChain中。
 
+在getResponseWithInterceptorChain函数中实例化了一个RealInterceptorChain，构造方法中的前三个参数很重要，第一个参数是一个RealCall，不必多说。第二个是所有的拦截器的集合，第三个参数是一个index,它是用来标记按顺序执行interceptors集合中的数组的。也就是说interceptor的执行的逻辑是通过RealInterceptorChain进行驱动的。当实例化了RealInterceptorChain之后便调用了它的proceed函数。看下RealInterceptorChain代码如下：
 
-OkHttp中除了自定义的拦截器外，内部有五大默认拦截器来负责请求的重试重定向、桥接、缓存、以及调用服务器等功能。不管是自定义拦截器还是默认拦截器都实现了Intercepter接口。
+```kotlin
+class RealInterceptorChain(
+  internal val call: RealCall,
+  private val interceptors: List<Interceptor>,
+  private val index: Int,
+  internal val exchange: Exchange?,
+  internal val request: Request,
+  internal val connectTimeoutMillis: Int,
+  internal val readTimeoutMillis: Int,
+  internal val writeTimeoutMillis: Int
+) : Interceptor.Chain {
+
+	// ...
+  
+  @Throws(IOException::class)
+  override fun proceed(request: Request): Response {
+
+		// ...
+
+    // 通过copy函数，实例化了一个新的RealInterceptorChain实例，注意index加了1
+    val next = copy(index + 1, request)
+    // 获取interceptors集合中的第index个拦截器，此处index是0，即获取第一个拦截器
+    val interceptor = interceptors[index]
+		// 执行拦截器的intercept方法，并传入下一个要执行的RealInterceptorChain实例
+    val response = interceptor.intercept(next) ?: throw NullPointerException(
+        "interceptor $interceptor returned null")
+		// ...
+    return response
+  }
+  	// 实例化了一个新的RealInterceptorChain对象
+    internal fun copy(
+    index: Int = this.index,
+    exchange: Exchange? = this.exchange,
+    request: Request = this.request,
+    connectTimeoutMillis: Int = this.connectTimeoutMillis,
+    readTimeoutMillis: Int = this.readTimeoutMillis,
+    writeTimeoutMillis: Int = this.writeTimeoutMillis
+  ) = RealInterceptorChain(call, interceptors, index, exchange, request, connectTimeoutMillis,
+      readTimeoutMillis, writeTimeoutMillis)
+
+  
+}
+```
+
+在RealInterceptorChain中首先通过copy函数实例化了一个新的RealInterceptorChain对象，并且index参数相比以前加了1，接着取到第index个拦截器执行了它的intercept函数，这个函数节后了下一个要执行的RealInterceptorChain对象。
+
+看下拦截器中intercept的实现，以BridgeInterceptor为例：
+
+```kotlin
+class BridgeInterceptor(private val cookieJar: CookieJar) : Interceptor {
+
+  @Throws(IOException::class)
+  override fun intercept(chain: Interceptor.Chain): Response {
+		// ...
+    
+    // 调用了chain的process方法
+    val networkResponse = chain.proceed(requestBuilder.build())
+
+    return responseBuilder.build()
+  }
+}  
+```
+
+可以看到，在BridgeInterceptor 的intercept方法中又调用了RealInterceptorChain的process方法。这样子就来事继续执行interceptors集合中的下一个拦截器，直到所有拦截器都执行完毕。
+
+## 3. OkHttp的五大拦截器
+
+上一节中认识了OkHttp中使用责任链模式来驱动拦截器的运行，并且看到在getResponseWithInterceptorChain函数中添加了五个默认拦截器：RetryAndFollowUpInterceptor、BridgeInterceptor、CacheInterceptor、ConnectInterceptor以及CallServerInterceptor。这五大默认拦截器分别来负责请求的重试重定向、桥接、缓存、以及调用服务器等功能。
+
+使用责任链模式的特点是最先被添加的拦截器最先被执行，但是最晚收到响应数据。因此拦截器的添加顺序非常重要。
 
 #### （1）RetryAndFollowUpInterceptor
 
-RetryAndFollowUpInterceptor是第一个被添加的默认拦截器，它负责失败重试和重定向。它的执行流程如下：
+RetryAndFollowUpInterceptor负责失败重试和重定向，是被第一个添加进来的拦截器，因此会首先被执行，但是确实最后一个收到响应数据的。在这个拦截器中，主要功能是判断是否需要重试与重定向。
 
-1. 先看任务是否被取消，被取消了就释放资源，不再执行请求。
-2. 调用下一拦截器执行后续请求，如果请求出现问题就要判断是否要重新执行请求，不重新执行的话就释放资源并抛出异常。
-3. 请求成功的话会根据响应码判断是否需要重定向，不需要重定向的话就返回 Response。需要重定向的话就销毁旧连接并创建新连接，进行新一轮循环。最多可重定向20次。
+重试的前提是收到RouteException或者IOException，一旦在后续的拦截器的执行过程中出现这两个异常，就会通过recover方法进行判断是否需要进行重新连接。
+
+重定向发生在重试判定之后，如果不满足条件还需要进一步调用followUpRequest根据Response的响应码，followUp最大发生20次。
+
+
 
 #### （2）BridgeInterceptor
 
@@ -407,4 +483,3 @@ RetryAndFollowUpInterceptor是第一个被添加的默认拦截器，它负责�
 2. 得到响应头并构建带有响应头的 Response，接着为 Response 构建响应体并返回。
 
 https://mrfzh.github.io/2019/07/18/okhttp3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%9A%E4%BA%94%E5%A4%A7%E6%8B%A6%E6%88%AA%E5%99%A8/
-
