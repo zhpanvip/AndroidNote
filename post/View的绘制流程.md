@@ -1,14 +1,12 @@
-
-
 ### View绘制前相关流程概述
 
 1. 在Activity被实例化后调用Activity的attach方法时会实例化PhoneWindow，并通过PhoneWindow的setWindowManager方法与WindowManager关联。
 2. Activity的onCreate方法中会通过setContentView实例化DecorView，并将Activity中的布局文件添加到DecorView的content中。
-3. ActivityThread的handleResumeActivity中，会将DecorView添加到WindowManager中，即执行[WMS添加Window的流程](post/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90.md)
+3. ActivityThread的handleResumeActivity中，会将DecorView添加到WindowManager中，即执行[WMS添加Window的流程](https://github.com/zhpanvip/AndroidNote/wiki/WMS核心分析)
 4. 在Window添加过程中会实例化ViewRootImpl,并且将DecorView传递给ViewRootImpl。
 5. ViewRootImpl是一个Android视图层接口的顶部，是View和WindowManager的桥梁，ViewRootImpl与Choreographer协同完成View的绘制，也负责接收底层的触摸事件的中转分发。
 
-### [Choreographer汇总](post/Choreographer%E8%AF%A6%E8%A7%A3.md)
+### [Choreographer汇总](https://github.com/zhpanvip/AndroidNote/wiki/Choreographer详解)
 
 ### View的绘制流程概述
 
@@ -31,53 +29,122 @@
    - dispatchDraw 绘制child
    - onDrawScrollBars 绘制装饰
 
+## 一 、View绘制流程前期准备
 
-## 一 View的绘制流程详细过程
+### 1. Activity的初始化与Window的添加
 
-### 1.Framework层与绘制流程相关的知识点
+handleLaunchActivity中会首先调用performLaunchActivity来创建一个Activity，并且执行Activity的attach，接着通过Instrumentation的callActivityOnCreate方法调用了Activity的onCreate。代码如下：
 
-#### （1）初始化PhoneWindow与WindowManager
+```java
+private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
+
+        Activity activity = null;
+        // ...
+   			// 通过Instrumentation实例化Activity
+        activity = mInstrumentation.newActivity(
+                cl, component.getClassName(), r.intent);
+
+        try {
+            Application app = r.packageInfo.makeApplication(false, mInstrumentation);
+						// 执行Activity的attach方法
+            activity.attach(appContext, this, getInstrumentation(), r.token,
+                        r.ident, app, r.intent, r.activityInfo, title, r.parent,
+                        r.embeddedID, r.lastNonConfigurationInstances, config,
+                        r.referrer, r.voiceInteractor, window, r.configCallback,
+                        r.assistToken);
+								// ... 
+          
+                // 调用Activity的onCreate方法
+                if (r.isPersistable()) {
+                    mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);
+                } else {
+                    mInstrumentation.callActivityOnCreate(activity, r.state);
+                }
+            }
+            r.setState(ON_CREATE);
+        } 
+				// ...
+
+        return activity;
+    }
+```
+
+#### （1）PhoneWindow关联WindowManager
 
 Activity在ActivityThread的performLaunchActivity中创建，创建完成后会首先执行attach方法，在attach方法中实例化PhoneWindow并关联WindowManager：
 
-```java
+```
 // Activity#attach()：
    
-	final void attach(...) {
-        attachBaseContext(context);
+final void attach(...) {
+    attachBaseContext(context);
 		//初始化 PhoneWindow
-        mWindow = new PhoneWindow(this, window, activityConfigCallback);
+    mWindow = new PhoneWindow(this, window, activityConfigCallback);
         
 		//初始化 WindowManager
-        mWindow.setWindowManager(
-                (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),
-                mToken, mComponent.flattenToString(),
-                (info.flags & ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);
-        mWindowManager = mWindow.getWindowManager();
-    }
-
-	// Window#setWindowManager()：
-
-    public void setWindowManager(WindowManager wm, IBinder appToken, String appName,
-            boolean hardwareAccelerated) {
-        //...
-        if (wm == null) {
-            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
-        }
-        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(this);
-    }
-
+    mWindow.setWindowManager(
+            (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),
+            mToken, mComponent.flattenToString(),
+            (info.flags & ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);
+    mWindowManager = mWindow.getWindowManager();
+}
 ```
+
+Activity的attach方法中首先实例化了一个PhoneWindow，然后调用PhoneWindow的setWindowManager去初始化WindowManager，可以看下setWindowManager的代码
+
+```java
+// Window#setWindowManager()：
+public void setWindowManager(WindowManager wm, IBinder appToken, String appName,
+        boolean hardwareAccelerated) {
+    //...
+    if (wm == null) {
+        wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
+    }
+    mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(this);
+}
+```
+
+这里就是保证会创建一个WindowManagerImpl，并赋值给PhoneWindow的成员变量mWindowManager。WindowManagerImpl这个类在WMS中已经多次见到。
 
 #### （2）初始化DecorView
 
-接下来在Activity的onCreate方法中会通过setContentView初始化DecorView,并将Activity的布局文件添加到DecorView的content布局中。在AppCompactActivity中还为DecorView设置了主题等布局。
+`mInstrumentation.callActivityOnCreate` 这行代码会通过Instrumentation来调用Activity的onCreate方法。代码如下：
+
+```java
+// Instrumentation.java
+
+public void callActivityOnCreate(Activity activity, Bundle icicle) {
+  	调用Activity的performCreate
+    activity.performCreate(icicle);
+    // ...
+}
+// Activity.java 
+
+final void performCreate(Bundle icicle) {
+    performCreate(icicle, null);
+}
+
+final void performCreate(Bundle icicle, PersistableBundle persistentState) {
+		// ...
+  
+    if (persistentState != null) {
+        // 调用onCreate
+        onCreate(icicle, persistentState);
+    } else {
+        onCreate(icicle);
+    }
+  
+		// ...
+}
+```
+
+可以看到，最终会调用Activity的onCreate方法，我们在onCreeate方法中会通过setContentView初始化DecorView,并将Activity的布局文件添加到DecorView的content布局中。在AppCompactActivity中还为DecorView设置了主题等布局。
 
 #### （3）ViewRootImpl关联DecorView
 
-在handleResumeActivity中，通过WindowManager的实现类WindowManagerImpl的addView方法将DecorView添加到了Window，在addView方法中通过WindowManagerGlobal的实例去addView，并且会实例化一个ViewRootImpl,最后把DecorView传递给了ViewRootImpl的setView。ViewRootImpl是DecorView的管理者，负责View树的测量、布局、绘制，以及通过Choreographer来控制View的刷新。
+在handleResumeActivity中，通过WindowManager的实现类WindowManagerImpl的addView方法将DecorView添加到了Window，这里其实就是一个Window的添加的过程了。
 
-```
+```java
 // ActivityThread
 @Override
     public void handleResumeActivity(IBinder token, boolean finalStateRequest, boolean isForward,
@@ -103,67 +170,36 @@ Activity在ActivityThread的performLaunchActivity中创建，创建完成后会�
 }
 ```
 
-```
-// WindowManagerImpl
-@Override
-public void addView(@NonNull View view, @NonNull ViewGroup.LayoutParams params) {
-    applyDefaultToken(params);
-    mGlobal.addView(view, params, mContext.getDisplay(), mParentWindow);
-}
-```
+Window的添加过程参考：[WindowManagerService](https://github.com/zhpanvip/AndroidNote/wiki/WMS核心分析)
 
-```
-public void addView(View view, ViewGroup.LayoutParams params,
-            Display display, Window parentWindow) {
+SurfaceFlinger申请Surface：[SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
 
-        // ... 省略无关代码
+### 2. ViewRootImpl与Choreographer
 
-        ViewRootImpl root;
-        View panelParentView = null;
-
-        synchronized (mLock) {
-            // 初始化ViewRootImpl
-            root = new ViewRootImpl(view.getContext(), display);
-
-            try {
-                // 将DocerView添加到ViewRootImpl
-                root.setView(view, wparams, panelParentView);
-            } catch (RuntimeException e) {
-            
-            }
-        }
-    }
-```
-
-#### （4）PhoneWindow与WindowManagerService建立联系
-
-WMS是所有Window窗口的管理者，负责Window的添加和删除、Surface的管理和事件派发等，因此在Activity中的PhoneWindow对象需要显示等操作，就必须与WMS交互才能进行。
-
-在ViewRootImpl的setView方法中，会调用requestLayout,并且通过WindowSession的addToDisplay与WMS进行交互。WMS会为每一个Window关联一个WindowStatus.
-
-#### （5）建立与 SurfaceFlinger 的连接
-
-SurfaceFlinger 主要是进行 Layer 的合成和渲染。
-
-在 WindowStatus 中，会创建 SurfaceSession，SurfaceSession 会在 Native 层构造一个 SurfaceComposerClient 对象，它是应用程序与 SurfaceFlinger 沟通的桥梁。
-
-#### （6）申请 Surface
-
-经过步骤四和步骤五之后，ViewRootImpl 与 WMS、SurfaceFlinger 都已经建立起连接，但此时 View 还没显示出来，我们知道，所有的 UI 最终都要通过 Surface 来显示，那么 Surface 是什么时候创建的呢？
+ViewRootImpl 与 WMS、SurfaceFlinger 建立起连接后，此时 View 还没显示出来，所有的 UI 最终都要通过 Surface 来显示，那么 Surface 是什么时候创建的呢？
 
 这就要回到前面所说的 ViewRootImpl 的 requestLayout 方法了，首先会 checkThread 检查是否是主线程，然后调用 scheduleTraversals 方法，scheduleTraversals 方法会先设置同步屏障，然后通过 Choreographer 类在下一帧到来时去执行 doTraversal 方法。简单来说，Choreographer 内部会接受来自 SurfaceFlinger 发出的 Vsync 垂直同步信号，这个信号周期一般是 16ms 左右。doTraversal 方法首先会先移除同步屏障，然后 performTraversals 真正进行 View 的绘制流程，即调用 performMeasure、performLayout、performDraw。不过在它们之前，会先调用 relayoutWindow 通过 WindowSession 与 WMS 进行交互，即把 Java 层创建的 Surface 与 Native 层的 Surface 关联起来。
 
+在ViewRootImpl的setView中会先执行一次requestLayout，这次requestLayout的执行时机是向AMS成功添加窗口后，收到Input事件之前执行的，因为只有先完成测量布局绘制流程后，各种触摸事件才有一有。
+
+同时，我们也可以自行调用View的requestLayout来发起View的测量、布局和绘制流程。看下requestLayout的代码：
+
 ```java
-    // ViewRootImpl
+// ViewRootImpl.java
+
     @Override
     public void requestLayout() {
         if (!mHandlingLayoutInLayoutRequest) {
+            // 检查是否是在主线程中，如果不是主线程则直接抛出异常
             checkThread();
+            // mLayoutRequested标记设置为true，在同一个Vsync周期内，执行多次requestLayout的流程
             mLayoutRequested = true;
             scheduleTraversals();
         }
     }
 ```
+
+scheduleTraversals方法中会发出一个同步屏障消息，并且将这次requestLayout请求放到TraversalRunnable的run方法中。然后通过Choreographer将TraversalRunnable发送出去，代码如下:
 
 ```java
     final TraversalRunnable mTraversalRunnable = new TraversalRunnable();
@@ -176,58 +212,67 @@ SurfaceFlinger 主要是进行 Layer 的合成和渲染。
             // 通过Choreographer发出一个mTraversalRunnable，会在这里执行
             mChoreographer.postCallback(
                     Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
-            if (!mUnbufferedInputDispatch) {
-                scheduleConsumeBatchedInput();
-            }
-            notifyRendererOfFramePending();
-            pokeDrawLockIfNeeded();
-        }
-    }
-
-    final class TraversalRunnable implements Runnable {
-        @Override
-        public void run() {
-            doTraversal();
-        }
-    }
-
-    void doTraversal() {
-        if (mTraversalScheduled) {
-            mTraversalScheduled = false;
-            // 移除同步屏障
-            mHandler.getLooper().getQueue().removeSyncBarrier(mTraversalBarrier);
-
-            if (mProfile) {
-                Debug.startMethodTracing("ViewAncestor");
-            }
-            //  通过该方法开启View的绘制流程，会调用performMeasure方法、performLayout方法和performDraw方法。
-            performTraversals();
-
-            if (mProfile) {
-                Debug.stopMethodTracing();
-                mProfile = false;
-            }
+						// ...
         }
     }
 ```
 
-### 2.View及ViewGroup的绘制流程
+Choreographer会通过FrameDisplayEventReceiver监听Vsync信号，等到Vsync到来时变化回调FrameDisplayEventReceiver的onVsync方法。并最终执行Choreographer中的doFrame方法,这个方法里边会去统计帧绘制的时间、真绘制信息、以及回调Callback,在ScheduleCallback中最终执行了TraversalRunnable的run方法。
 
-View的绘制是从performTraversals开始，进行测量、布局和绘制的流程。
+```java
+final class TraversalRunnable implements Runnable {
+    @Override
+    public void run() {
+        doTraversal();
+    }
+}
+
+void doTraversal() {
+    if (mTraversalScheduled) {
+        mTraversalScheduled = false;
+        // 移除同步屏障
+        mHandler.getLooper().getQueue().removeSyncBarrier(mTraversalBarrier);
+
+        if (mProfile) {
+            Debug.startMethodTracing("ViewAncestor");
+        }
+        //  通过该方法开启View的绘制流程，会调用performMeasure方法、performLayout方法和performDraw方法。
+        performTraversals();
+
+        if (mProfile) {
+            Debug.stopMethodTracing();
+            mProfile = false;
+        }
+    }
+}
+```
+
+TraversalRunnable的run方法执行了doTraversal。doTraversal方法中会首先将同步屏障移除，然后调用performTraversals方法开启View的绘制流程。
+
+
+
+## 二、View绘制流程
+
+performTraversals方法中会依次执行performMeasure、performLayout和performDraw方法来开始View的测量、布局和绘制流程。
 
 ```java
 // ViewRootImpl
 private void performTraversals() {
-     // 根据Window的宽高与LayoutParams来计算DecorView的MeasureSpec
+     // 根据Window的宽高与DecorView的LayoutParams来计算DecorView的MeasureSpec
      int childWidthMeasureSpec = getRootMeasureSpec(mWidth, lp.width);
      int childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);
-     ...............
+  
+     // ...
+  
     //measur过程
     performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
-     ...............
+  
+    // ...
+  
     //layout过程
     performLayout(lp, desiredWindowWidth, desiredWindowHeight);
-     ...............
+    // ...
+  
     //draw过程
     performDraw();
 }
@@ -235,22 +280,83 @@ private void performTraversals() {
 
 
 
+### 1. MeasureSpec
+
+MeasureSpec是一个32位的int值，高位代表测量模式,低30位代表测量大小,MeasureSpec将SpecMode和SpecSize封装成一个int值避免了过多的内存分配。
+
+MeasureSpec类中主要是对MeasureSpec的int值进行打包和拆包的逻辑。核心代码如下：
+
+```java
+// View#MeasureSpec
+
+public static class MeasureSpec {
+    private static final int MODE_SHIFT = 30;
+    private static final int MODE_MASK  = 0x3 << MODE_SHIFT;
+
+    @IntDef({UNSPECIFIED, EXACTLY, AT_MOST})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface MeasureSpecMode {}
+
+    public static final int UNSPECIFIED = 0 << MODE_SHIFT;
+
+    public static final int EXACTLY     = 1 << MODE_SHIFT;
+
+    public static final int AT_MOST     = 2 << MODE_SHIFT;
+
+  	// 将size与mode打包到一个int中
+    public static int makeMeasureSpec( int size, int mode) {
+        if (sUseBrokenMakeMeasureSpec) {
+            return size + mode;
+        } else {
+            return (size & ~MODE_MASK) | (mode & MODE_MASK);
+        }
+    }
+
+    /**
+     * 从MeasureSpec的int值中解析出mode
+     */
+    @MeasureSpecMode
+    public static int getMode(int measureSpec) {
+        //noinspection ResourceType
+        return (measureSpec & MODE_MASK);
+    }
+		/**
+		 * 从MeasureSpec的int值中解析出size
+		 */
+    public static int getSize(int measureSpec) {
+        return (measureSpec & ~MODE_MASK);
+    }
+
+}
+```
+
+其中测量模式表示控件对应的宽高模式：
+
+- **UNSPECIFIED**：父容器不对View做任何限制，要多大就多大，这种情况一般用于系统内部，表示一种测量状态。
+ - **EXACTLY**：父容器已经检测出View所需要的 精确大小，这个时候View的最终大小就是SpecSize所指定的值。对应LayoutParams中的MATCH_PARENT和具体的数值两种模式。
+- **AT_MOST**：父容器制定了一个可用大小的SpecSize，View的大小不能大于这个值。具体是什么值还要看不同的View的具体表现。对应LayoutParams中的WRAP_CONTENT。
+
+
+
+performTraversals方法中首先通过getRootMeasureSpec根据Window的宽高与DecorView的LayoutParams来计算得到DecorView的MeasureSpec。代码如下;
+
 ```java
 // ViewRootImpl
 private static int getRootMeasureSpec(int windowSize, int rootDimension) {
     int measureSpec;
     switch (rootDimension) {
-
+		// MATCH_PARENT对应EXACTLY模式    
     case ViewGroup.LayoutParams.MATCH_PARENT:
-        // Window can't resize. Force root view to be windowSize.
+        // 将windowSize值与MeasureSpec.EXACTLY打包成一个int值MeasureSpec
         measureSpec = MeasureSpec.makeMeasureSpec(windowSize, MeasureSpec.EXACTLY);
         break;
+    // WRAP_CONTENT对应AT_MOST模式    
     case ViewGroup.LayoutParams.WRAP_CONTENT:
-        // Window can resize. Set max size for root view.
+        // 将windowSize值与MeasureSpec.AT_MOST打包成一个int值MeasureSpec
         measureSpec = MeasureSpec.makeMeasureSpec(windowSize, MeasureSpec.AT_MOST);
         break;
     default:
-        // Window wants to be an exact size. Force root view to be that size.
+        // 将DecorView的具体宽高值与MeasureSpec.EXACTLY打包成一个int值MeasureSpec
         measureSpec = MeasureSpec.makeMeasureSpec(rootDimension, MeasureSpec.EXACTLY);
         break;
     }
@@ -258,52 +364,123 @@ private static int getRootMeasureSpec(int windowSize, int rootDimension) {
 }
 ```
 
+- LayoutParams.MATCH_PARENT：精确模式，大小就是窗口的大小
+- LayoutParams.WRAP_CONTENT：最大模式，大小不确定，但是不能超过窗口的大小。
+- 固定大小（例如100dp）：精确模式，大小为LayoutParams中指定的大小。
+
+对于普通的View来说，它的MeasureSpec是由父View的MeasureSpec和自身的LayoutParmas决定的。ViewGroup中通过getChildMeasureSpec来计算子View的Measure，
+
 ```java
-public static int makeMeasureSpec(@IntRange(from = 0, to = (1 << MeasureSpec.MODE_SHIFT) - 1) int size,
-                                  @MeasureSpecMode int mode) {
-    if (sUseBrokenMakeMeasureSpec) {
-        return size + mode;
-    } else {
-        return (size & ~MODE_MASK) | (mode & MODE_MASK);
-    }
+// ViewGroup.java
+
+protected void measureChild(View child, int parentWidthMeasureSpec,
+        int parentHeightMeasureSpec) {
+    final LayoutParams lp = child.getLayoutParams();
+		// 计算子View Width的MeasureSpec
+    final int childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,
+            mPaddingLeft + mPaddingRight, lp.width);
+    // 计算子View Height的MeasureSpec
+    final int childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,
+            mPaddingTop + mPaddingBottom, lp.height);
+		// 调用子View的measure开始子View的测量
+    child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
 }
 ```
 
-#### MeasureSpec是什么？
-
-上述代码中用到了MeasureSpec，MeasureSpec是一个32位的int值，高位代表测量模式,低30位代表测量大小,MeasureSpec将SpecMode和SpecSize封装成一个int值避免了过多的内存分配。
-
-##### MeasureSpec的创建规则
-
-MeasureSpec是有Parent的SpecMode与子View的LayoutParams共同确定的，其计算规则如下表：
 
 
-| childLayoutParams/ParentSpecMode | EXACTLY                 | AT_MOST                 | UNSPECIFIED             |
-| -------------------------------- | ----------------------- | ----------------------- | ----------------------- |
-| dp/px                            | EXACTLY<br /> childSize | EXACTLY<br /> childSize | EXACTLY<br /> childSize |
-| match_parent                     | EXACTLY<br />parentSize | AT_MOST<br />parentSize | UNSPECIFIED<br />0      |
-| wrap_content                     | AT_MOST<br />parentSize | AT_MOST<br />parentSize | UNSPECIFIED<br />0      |
+```java
+public static int getChildMeasureSpec(int spec, int padding, int childDimension) {
+    int specMode = MeasureSpec.getMode(spec);
+    int specSize = MeasureSpec.getSize(spec);
 
-#### MeasureSpec的计算方式
+    int size = Math.max(0, specSize - padding);
 
-其中测量模式表示控件对应的宽高模式：
+    int resultSize = 0;
+    int resultMode = 0;
 
-- **UNSPECIFIED**：父元素不对子元素施加任何束缚，子元素可以得到任意想要的大小；日常开发中自定义View不考虑这种模式，可暂时先忽略；
- - **EXACTLY**：父元素决定子元素的确切大小，子元素将被限定在给定的边界里而忽略它本身大小；这里我们理解为控件的宽或者高被设置为 match_parent 或者指定大小，比如20dp；
-- **AT_MOST**：子元素至多达到指定大小的值；这里我们理解为控件的宽或者高被设置为wrap_content。
+    switch (specMode) {
+    // Parent has imposed an exact size on us
+    case MeasureSpec.EXACTLY: // 父View是EXACTLY模式
+        if (childDimension >= 0) { // 子View的LayoutParams宽/高设置了精确值
+            // 子View的大小就是该子View的LayoutParams中设置的值
+            resultSize = childDimension;
+            // 子View的模式设置为EXACTLY
+            resultMode = MeasureSpec.EXACTLY;
+        } else if (childDimension == LayoutParams.MATCH_PARENT) { 
+            // 子View的LayoutParams的宽/高设置了MATCH_PARENT
+            // 子View的size设置为父View的size
+            resultSize = size;
+            // 子View的模式设置为EXACTLY
+            resultMode = MeasureSpec.EXACTLY;
+        } else if (childDimension == LayoutParams.WRAP_CONTENT) {
+            // 子View的LayoutParams的宽/高设置了WRAP_CONTENT
+            // 子View的size设置为父View的size
+            resultSize = size;
+            // 子View的模式设置为AT_MOST
+            resultMode = MeasureSpec.AT_MOST;
+        }
+        break;
+
+    // Parent has imposed a maximum size on us
+    case MeasureSpec.AT_MOST: // 父View是AT_MOST模式
+        if (childDimension >= 0) {
+            // 子View的大小就是该子View的LayoutParams中设置的值
+            resultSize = childDimension;
+            // 子View的模式设置为EXACTLY
+            resultMode = MeasureSpec.EXACTLY;
+        } else if (childDimension == LayoutParams.MATCH_PARENT) {
+            // 子View的size设置为父View的size
+            resultSize = size;
+            // 子View的模式设置为AT_MOST
+            resultMode = MeasureSpec.AT_MOST;
+        } else if (childDimension == LayoutParams.WRAP_CONTENT) {
+            // 子View的size设置为父View的size
+            resultSize = size;
+            // 子View的模式设置为AT_MOST
+            resultMode = MeasureSpec.AT_MOST;
+        }
+        break;
+		// 不讨论这种情况
+    case MeasureSpec.UNSPECIFIED:
+        if (childDimension >= 0) {
+            // Child wants a specific size... let them have it
+            resultSize = childDimension;
+            resultMode = MeasureSpec.EXACTLY;
+        } else if (childDimension == LayoutParams.MATCH_PARENT) {
+            // Child wants to be our size... find out how big it should
+            // be
+            resultSize = View.sUseZeroUnspecifiedMeasureSpec ? 0 : size;
+            resultMode = MeasureSpec.UNSPECIFIED;
+        } else if (childDimension == LayoutParams.WRAP_CONTENT) {
+            // Child wants to determine its own size.... find out how
+            // big it should be
+            resultSize = View.sUseZeroUnspecifiedMeasureSpec ? 0 : size;
+            resultMode = MeasureSpec.UNSPECIFIED;
+        }
+        break;
+    }
+    //noinspection ResourceType
+    return MeasureSpec.makeMeasureSpec(resultSize, resultMode);
+}
+```
+
+对于上面的代码可以归纳为如下表格：
+
+
+| ParentSpecMode<br />childLayoutParams | EXACTLY                 | AT_MOST                 | UNSPECIFIED             |
+| :------------------------------------ | ----------------------- | ----------------------- | ----------------------- |
+| 固定大小 dp/px                        | EXACTLY<br /> childSize | EXACTLY<br /> childSize | EXACTLY<br /> childSize |
+| match_parent                          | EXACTLY<br />parentSize | AT_MOST<br />parentSize | UNSPECIFIED<br />0      |
+| wrap_content                          | AT_MOST<br />parentSize | AT_MOST<br />parentSize | UNSPECIFIED<br />0      |
 
 
 
-对于模式和大小值的获取，只需要通过位运算即可。例如，通过mode和size相加就可以得到MeasureSpec:
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/a1ceee4d75304d8fe10442039c417e74.png#pic_center)
-当需要获得Mode的时候只需要用measureSpec与MODE_TASK相与即可:
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/4a9d2c83362652f7a7c8f4d013d15a7e.png#pic_center)
-想获得size的话只需要只需要measureSpec与~MODE_TASK相与即可，如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/8efd96d45db0e23ffb73f2bb47ade95c.png#pic_center)
 
 
+### 2. View的测量流程
 
-#### （1）View的测量流程
+#### （1）View的测量
 
 首先根据Window的宽高与LayoutParamters来生成MeasureSpec，然后执行performMeasure流程。performMeasure方法会去调用DecorView的measure方法，mesaure是一个final修饰的方法，开发者无法重写measure，在measure会进行一些公用的测量，然后会调用onMeasure，并将MeasureSpec传递给onMeasure.
 
@@ -370,12 +547,7 @@ public static int getDefaultSize(int size, int measureSpec) {
 
 由上述可以看出对于View的测量流程而言，其本身宽高直接受限于父View的 布局要求，举例来说，父View被限制宽度为40px,子View的最大宽度同样也需受限于这个数值。因此，在测量子View之时，子View必须已知父View的布局要求，这个 布局要求，  Android中通过使用 MeasureSpec 类来进行描述。
 
-
-
-
-
-
-####  （2）ViewGroup的测量流程
+#### （2）ViewGroup的测量
 
 对于ViewGroup除了完成自身的测量外，还需要调用所有子元素的measure,各个子元素再递归执行测量。在ViewGroup是一个抽象类，它没有重写onMeasure方法，但提供了一个叫measureChildren的方法：
 
@@ -522,11 +694,13 @@ public static int resolveSizeAndState(int size, int measureSpec, int childMeasur
 }
 ```
 
-#### （3）View的布局流程
+
+
+### 3.View的布局流程
 
 Layout的作用是ViewGroup用来确定子元素的位置，当ViewGroup的位置被确定后，它在onLayout中会遍历所有子元素并调用其layout方法，在layout方法中onLayout方法又会被调用。layout方法确定View本身的位置，而onLayout方法会确定所有子元素的位置。
 
-#### View中的layout
+#### （1）View中的布局
 
 ```java
 // 伪代码实现
@@ -556,7 +730,7 @@ public void layout(int l, int t, int r, int b) {
 
 layout中首先会通过setFrame方法来设定View四个顶点的位置，View四个顶点的位置一旦确定那么View在父容器中的位置也就确定了。
 
-#### （4）ViewGroup中的onLayout
+#### （2）ViewGroup中的布局
 
 在View确定自身位置后，接着调用onLayout方法，这个方法的用途是父View如容器确定子元素的位置。onLayout的具体实现和具体的布局有关，所以View和ViewGroup中都没有真正实现onLayout方法。以LinearLayout为例：
 
@@ -626,9 +800,7 @@ mRight = right;
 mBottom = bottom;
 ```
 
-
-
-#### （5）View的Draw过程
+### 4. View的绘制流程
 
 draw的过程是将View绘制到屏幕上，View的绘制过程遵循如下几步：
 
@@ -699,9 +871,9 @@ View绘制过程的传递是通过dispatchDraw来实现的，dispatchDraw会通�
 
 
 
-## 二、View绘制流程常见问题
+## 三、View绘制流程常见问题
 
-### 1.View的getMeasureWidht与getWidth有什么区别?
+### 1. View的getMeasureWidht与getWidth有什么区别?
 
 View中getWidth与getHeight的代码如下：
 
@@ -717,7 +889,7 @@ public final int getHeight() {
 
 从getWidht和getHeightd 源码再结合mLeft、mRight、mTop和mBottom这四个遍历值的赋值来看，getWidth的返回值刚好就是View的测量值。因此，在View的默认实现汇总View的测量宽高和最终宽高是相等的，只不过测量宽高形成以Measure过程，而最终宽高形成与View的layout过程，即两者的赋值实际不同。测量宽高的赋值实际稍微早了一些。因此，在日常的开发中，我们可以认为View的测量宽高就等于最终宽高。
 
-### 2.requestLayout()、invalidate()与postInvalidate()有什么区别？
+### 2. requestLayout()、invalidate()与postInvalidate()有什么区别？
 
 requestLayout()：该方法会递归调用父窗口的requestLayout()方法，直到触发ViewRootImpl的performTraversals()方法，此时mLayoutRequestede为true，会触发onMesaure()与onLayout()方法，不一定会触发onDraw()方法。
 
@@ -725,14 +897,11 @@ invalidate()：该方法递归调用父View的invalidateChildInParent()方法，
 
 postInvalidate()：该方法功能和invalidate()一样，只是它可以在非UI线程中调用。一般说来需要重新布局就调用requestLayout()方法，需要重新绘制就调用invalidate()方法。
 
-
-
-
-
  [View 工作原理](https://github.com/Omooo/Android-Notes/blob/master/blogs/Android/View%20%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.md)
 
 
  [反思|Android View机制设计与实现：测量流程](https://juejin.cn/post/6844903909320835080)
 
 
- [深入理解Android之View的绘制流程](
+ [深入理解Android之View的绘制流程](https://www.jianshu.com/p/060b5f68da79)
+
