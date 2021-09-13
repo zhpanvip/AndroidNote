@@ -185,17 +185,17 @@
 
 ### 计算机网络
 - [简述TCP/IP协议](/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md#tcpip%E5%8D%8F%E8%AE%AE)
-- [TCP与UDP](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md)
-   - [什么是连接会话?](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D)
-   - [TCP协议与UDP协议的区别](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md#tcp%E5%8D%8F%E8%AE%AE%E4%B8%8Eudp%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8C%BA%E5%88%AB)
-   - [TCP协议的三次握手](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md#tcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B)
-   - [TCP协议的四次挥手](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md#tcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B)
-   - [TCP的滑动窗口与流速控制是什么？](https://github.com/zhpanvip/AndroidNote/blob/main/post/TCP%E4%B8%8EUDP.md#tcp%E7%9A%84%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E4%B8%8E%E6%B5%81%E9%80%9F%E6%8E%A7%E5%88%B6%E6%98%AF%E4%BB%80%E4%B9%88)
+- [TCP与UDP](post/TCP%E4%B8%8EUDP.md)
+   - [什么是连接会话?](post/TCP%E4%B8%8EUDP.md#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D)
+   - [TCP协议与UDP协议的区别](post/TCP%E4%B8%8EUDP.md#tcp%E5%8D%8F%E8%AE%AE%E4%B8%8Eudp%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8C%BA%E5%88%AB)
+   - [TCP协议的三次握手](post/TCP%E4%B8%8EUDP.md#tcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B)
+   - [TCP协议的四次挥手](post/TCP%E4%B8%8EUDP.md#tcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B)
+   - [TCP的滑动窗口与流速控制是什么？](post/TCP%E4%B8%8EUDP.md#tcp%E7%9A%84%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E4%B8%8E%E6%B5%81%E9%80%9F%E6%8E%A7%E5%88%B6%E6%98%AF%E4%BB%80%E4%B9%88)
 
 - [IP 协议相关技术](/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md#ip-%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF)
 - [Http的get和post的主要有什么区别？](/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md#http%E4%B8%8Ehttps)
 - [HTTP协议](/post/Http%E5%8D%8F%E8%AE%AE.md)
-- [HTTPS的实现原理](https://github.com/zhpanvip/AndroidNote/blob/main/post/HTTPS%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
+- [HTTPS的实现原理](post/HTTPS%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [Socket](/post/Socket.md)
 
 ### 算法
