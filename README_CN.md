@@ -25,20 +25,10 @@
 
 ### Java集合框架
 
-- [Hash表与HashMap](/post/Hash%E8%A1%A8%E4%B8%8EHashMap.md)
+- [Hash表](/post/Hash%E8%A1%A8%E4%B8%8EHashMap.md)
 - [HashMap的工作原理](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#1hashmap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
-- [为什么HashMap在多线程并发存在死循环的问题，JDK1.8中做了哪些优化？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#2%E4%B8%BA%E4%BB%80%E4%B9%88hashmap%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E6%AD%BB%E5%BE%AA%E7%8E%AF%E7%9A%84%E9%97%AE%E9%A2%98jdk18%E4%B8%AD%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96)
-- [Hashtable与HashMap有什么区别？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#3hashtable%E4%B8%8Ehashmap%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
-- [了解ConcurrentHashMap吗？它是怎么实现的?](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#4%E4%BA%86%E8%A7%A3concurrenthashmap%E5%90%97%E5%AE%83%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
-- [可以使用CocurrentHashMap来代替Hashtable吗？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#5%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8cocurrenthashmap%E6%9D%A5%E4%BB%A3%E6%9B%BFhashtable%E5%90%97)
-- [ConcurrentHashMap有什么缺陷吗？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#7concurrenthashmap%E5%9C%A8jdk-7%E5%92%8C8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
-- [ConcurrentHashMap在JDK 7和8之间的区别](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#7concurrenthashmap%E5%9C%A8jdk-7%E5%92%8C8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB)
-- [Java中HashMap和HashTable的区别？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#9java%E4%B8%ADhashmap%E5%92%8Chashtable%E7%9A%84%E5%8C%BA%E5%88%AB)
-- [HashMap 和 HashSet 的区别](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#10hashmap-%E5%92%8C-hashset-%E7%9A%84%E5%8C%BA%E5%88%AB)
-- [请说出 ArrayList和LinkedList的区别？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#11%E8%AF%B7%E8%AF%B4%E5%87%BA-arraylist%E5%92%8Clinkedlist%E7%9A%84%E5%8C%BA%E5%88%AB)
-- [请说出 ArrayList和LinkedList的区别？](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#11%E8%AF%B7%E8%AF%B4%E5%87%BA-arraylist%E5%92%8Clinkedlist%E7%9A%84%E5%8C%BA%E5%88%AB)
-- [Java 中 Set 与 List 有什么不同?](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#12java-%E4%B8%AD-set-%E4%B8%8E-list-%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C)
-
+- [ConcurrentHashMap](post/ConcurrentHashMap.md)
+- [Java集合常见问题](post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md)
 
 
 ### JVM
