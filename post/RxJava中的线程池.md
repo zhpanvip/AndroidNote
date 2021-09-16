@@ -14,6 +14,7 @@ Observable.create(new ObservableOnSubscribe<Integer>() {
 ```
 
 
+
 ## 一、RxJava中的线程池
 
 ### 1. IO密集型线程池
@@ -238,6 +239,7 @@ public ScheduledThreadPoolExecutor(int corePoolSize,
 跟IO的区别是，这里创建了多个线程池。。。。
 
 ## 二、切换线程操作符
+
 
 
 ```java
