@@ -66,13 +66,14 @@
 - [SharedPreferences](/post/SharedPreferences.md)
 - [Bitmap](post/AndroidNote/wiki/Bitmap.md)
 - [Activity的启动模式](post/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F.md)
+- [组件化项目架构搭建](post/%E7%BB%84%E4%BB%B6%E5%8C%96%E6%9E%B6%E6%9E%84%E7%9A%84%E6%90%AD%E5%BB%BA.md)
 - [Fragment核心原理](/post/Fragment%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.md)
 - [组件化WebView架构搭建](/post/%E7%BB%84%E4%BB%B6%E5%8C%96WebView%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA.md)
 - [为什么 Activity.finish() 之后 10s 才 onDestroy ？](https://github.com/zhpanvip/AndroidNote/wiki/Activity%E7%9A%84finish%E6%B5%81%E7%A8%8B#%E4%B8%BA%E4%BB%80%E4%B9%88-activityfinish-%E4%B9%8B%E5%90%8E-10s-%E6%89%8D-ondestroy-)
 
 ### Android消息机制
 
-- [Handler的实现原理](post/Handler%E7%9B%B8%E5%85%B3.md#1%E7%AE%80%E8%BF%B0handler%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+- [Handler的实现原理](post/Handler%E7%9B%B8%E5%85%B3.md)
 - [ThreadLocal的实现原理](post/ThreadLoacal%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [IdleHandler](post/IdleHandler.md)
 - [HandlerThread](post/HandlerThread%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)

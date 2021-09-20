@@ -68,6 +68,7 @@
 - [Bitmap](https://github.com/zhpanvip/AndroidNote/wiki/Bitmap)
 - [Activity的启动模式](https://github.com/zhpanvip/AndroidNote/wiki/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F)
 - [Fragment核心原理](https://github.com/zhpanvip/AndroidNote/wiki/Fragment%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86)
+- [组件化项目架构搭建](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BB%84%E4%BB%B6%E5%8C%96%E6%9E%B6%E6%9E%84%E7%9A%84%E6%90%AD%E5%BB%BA)
 - [组件化WebView架构搭建](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BB%84%E4%BB%B6%E5%8C%96WebView%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA)
 - [为什么 Activity.finish() 之后 10s 才 onDestroy ？](https://github.com/zhpanvip/AndroidNote/wiki/Activity%E7%9A%84finish%E6%B5%81%E7%A8%8B#%E4%B8%BA%E4%BB%80%E4%B9%88-activityfinish-%E4%B9%8B%E5%90%8E-10s-%E6%89%8D-ondestroy-)
 
