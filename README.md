@@ -102,10 +102,7 @@
 
 - [ViewRootImpl](https://github.com/zhpanvip/AndroidNote/wiki/ViewRootImpl)
 - [事件分发机制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6)
-- [ViewGroup中的mFirstTouchTarget是一个什么东西，它有什么作用？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#1viewgroup%E4%B8%AD%E7%9A%84mfirsttouchtarget%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF%E5%AE%83%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8)
-- [如果在ViewGroup中拦截了ACTION_DOWN事件会怎样？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#2%E5%A6%82%E6%9E%9C%E5%9C%A8viewgroup%E4%B8%AD%E6%8B%A6%E6%88%AA%E4%BA%86action_down%E4%BA%8B%E4%BB%B6%E4%BC%9A%E6%80%8E%E6%A0%B7)
-- [为什么设置了onTouchListener后onClickListener不会被调用？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
-- [为什么一个View设置了setOnTouchListener会有提示没有引用performClick方法的警告？](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#3%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%BA%86ontouchlistener%E5%90%8Eonclicklistener%E4%B8%8D%E4%BC%9A%E8%A2%AB%E8%B0%83%E7%94%A8)
+- [事件分发常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98)
 
 
 
@@ -122,6 +119,7 @@
 ### View的绘制流程
 
 - [简述View的绘制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
+- [requestLayout与invalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E4%B8%8Einvalidate)
 - [LayoutInflater](https://github.com/zhpanvip/AndroidNote/wiki/LayoutInflater)
 - [MeasureSpec是什么？](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
 
@@ -247,5 +245,3 @@
 ### 其它
 
 - [HR常见问题](https://github.com/zhpanvip/AndroidNote/wiki/HR%E9%9D%A2%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98)
-
-
