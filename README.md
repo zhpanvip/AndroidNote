@@ -18,9 +18,8 @@
 
 - [Hash表](https://github.com/zhpanvip/AndroidNote/wiki/Hash%E8%A1%A8%E4%B8%8EHashMap)
 - [ConcurrentHashMap](https://github.com/zhpanvip/AndroidNote/wiki/ConcurrentHashMap)
-- [HashMap的工作原理](https://github.com/zhpanvip/AndroidNote/wiki/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6#1hashmap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
+- [HashMap的工作原理](https://github.com/zhpanvip/AndroidNote/wiki/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Java集合常见问题](https://github.com/zhpanvip/AndroidNote/wiki/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6#3hashtable%E4%B8%8Ehashmap%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
-
 
 ### JVM
 

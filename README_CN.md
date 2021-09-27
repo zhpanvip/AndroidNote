@@ -17,7 +17,7 @@
 ### Java集合框架
 
 - [Hash表](/post/Hash%E8%A1%A8%E4%B8%8EHashMap.md)
-- [HashMap的工作原理](/post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md#1hashmap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86)
+- [HashMap的工作原理](post/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.md)
 - [ConcurrentHashMap](post/ConcurrentHashMap.md)
 - [Java集合常见问题](post/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.md)
 
