@@ -242,6 +242,7 @@
 - [567. 字符串的排列](https://github.com/zhpanvip/AndroidNote/wiki/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97)
 
 #### [递归](https://github.com/zhpanvip/AndroidNote/wiki/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95)
+#### [动态规划](https://github.com/zhpanvip/AndroidNote/wiki/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
 
 ### 其它
 
