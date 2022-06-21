@@ -1,16 +1,14 @@
-![公众号:玩转安卓Dev](https://gitee.com/zhpanvip/images/raw/master/project/group/wechat_dyh.png)
-
-
+![公众号:玩转安卓Dev](https://cdn.jsdelivr.net/gh/zhpanvip/images/project/group/wechat_dyh.png)
 
 ## Java基础
 
 ### 面向对象与Java基础知识
-- [Java中的泛型](https://zhpanvip.gitee.io/2021/01/16/java-generics/)
-- [Java注解](https://zhpanvip.gitee.io/2018/08/25/17.Java%20annotation/)
-- [Java反射](https://zhpanvip.gitee.io/2021/01/14/36-java-reflection/)
-- [Java编译时注解处理器](https://zhpanvip.gitee.io/2018/09/10/18.java%20apt/)
-- [Java中的String字符串](https://zhpanvip.gitee.io/2020/09/08/27.String%20in%20java(1)/)
-- [StringBuilder与StringBuffer](https://zhpanvip.gitee.io/2020/09/12/28.String%20in%20java%20(2)/)
+- [Java中的泛型](https://zhangpan.site/2021/01/16/java-generics/)
+- [Java注解](https://https://zhangpan.site/2018/08/25/17.Java%20annotation/)
+- [Java反射](https://https://zhangpan.site/2021/01/14/36-java-reflection/)
+- [Java编译时注解处理器](https://https://zhangpan.site/2018/09/10/18.java%20apt/)
+- [Java中的String字符串](https://https://zhangpan.site/2020/09/08/27.String%20in%20java(1)/)
+- [StringBuilder与StringBuffer](https://https://zhangpan.site/2020/09/12/28.String%20in%20java%20(2)/)
 - [Java基础常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)
 
 
@@ -24,9 +22,9 @@
 
 ### JVM
 
-- [JVM的内存区域](https://zhpanvip.gitee.io/2020/09/04/26.JVM%20memory/)
-- [Java的垃圾回收机制](https://zhpanvip.gitee.io/2020/09/19/29.Java%20GC/)
-- [JVM类加载的机制](https://zhpanvip.gitee.io/2020/12/25/33.jvm-class-load/)
+- [JVM的内存区域](https://https://zhangpan.site/2020/09/04/26.JVM%20memory/)
+- [Java的垃圾回收机制](https://https://zhangpan.site/2020/09/19/29.Java%20GC/)
+- [JVM类加载的机制](https://https://zhangpan.site/2020/12/25/33.jvm-class-load/)
 
 
 ### 多线程与并发
@@ -37,7 +35,7 @@
 - [ReentrantLock的实现原理](https://juejin.cn/post/6975435256111300621)
 - [ReentrantLock等待与唤醒机制](https://juejin.cn/post/6980655421497278495)
 - [CAS、Unsafe类以及Automic并发包](https://juejin.cn/post/6977993272538955806)
-- [ThreadLoacal的实现原理](https://juejin.cn/post/6986301941269659656)
+- [ThreadLocal的实现原理](https://juejin.cn/post/6986301941269659656)
 - [线程池的实现原理](https://juejin.cn/post/6983213662383112206/)
 - [Java线程中断机制](https://github.com/zhpanvip/AndroidNote/wiki/Java%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6)
 - [多线程与并发常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80)
@@ -193,7 +191,7 @@
 - [704. 二分查找](https://github.com/zhpanvip/AndroidNote/wiki/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95#leetcode-704-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE)
 - [剑指 Offer 53 - II. 0～n-1中缺失的数字](https://github.com/zhpanvip/AndroidNote/wiki/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95#%E5%89%91%E6%8C%87-offer-53---ii-0n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97)
 #### [链表相关](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
-
+- [2. 两数相加](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0)
 - [19.删除链表的倒数第 N 个结点](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#19-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC-n-%E4%B8%AA%E7%BB%93%E7%82%B9)
 - [21. 合并两个有序链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#leetcode-21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8)
 - [24. 两两交换链表中的节点](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9)
@@ -201,6 +199,7 @@
 - [86. 分隔链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#86-%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8)
 - [92. 反转链表 II](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#92-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8-ii)
 - [141. 环形链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8)
+- [160. 相交链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#160-%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8)
 - [206. 反转链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8)
 - [206 反转链表 扩展](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8-%E6%89%A9%E5%B1%95)
 - [234. 回文链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#234-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8)
@@ -209,26 +208,39 @@
 - [面试题 02.02. 返回倒数第 k 个节点](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E9%9D%A2%E8%AF%95%E9%A2%98-0202-%E8%BF%94%E5%9B%9E%E5%80%92%E6%95%B0%E7%AC%AC-k-%E4%B8%AA%E8%8A%82%E7%82%B9)
 - [面试题 02.08. 环路检测](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E9%9D%A2%E8%AF%95%E9%A2%98-0208-%E7%8E%AF%E8%B7%AF%E6%A3%80%E6%B5%8B)
 - [剑指 Offer 06. 从尾到头打印链表](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E5%89%91%E6%8C%87-offer-06-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8)
+- [剑指 Offer 18. 删除链表的节点](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E5%89%91%E6%8C%87-offer-18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9)
 - [剑指 Offer 22. 链表中倒数第k个节点](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E5%89%91%E6%8C%87-offer-22-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9)
 - [剑指 Offer 35. 复杂链表的复制](https://github.com/zhpanvip/AndroidNote/wiki/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E5%89%91%E6%8C%87-offer-35-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6---%E5%90%8C-leetcode-138-%E5%A4%8D%E5%88%B6%E5%B8%A6%E9%9A%8F%E6%9C%BA%E6%8C%87%E9%92%88%E7%9A%84%E9%93%BE%E8%A1%A8)
 
 #### [数组相关](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
 - [1. 两数之和](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C)
+- [11. 盛最多水的容器](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8)
 - [53. 最大子序和](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#53-%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C)
 - [75. 颜色分类](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#75-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB)
 - [124.验证回文串](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#125-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2)
+- - [136. 只出现一次的数字](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97)
 - [167. 两数之和 II - 输入有序数组](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-ii---%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84)
+  -[169. 多数元素](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0)
 - [189.旋转数组](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#189-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84)
+- [209. 长度最小的子数组](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#209-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84)
 - [283.移动0](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#283-%E7%A7%BB%E5%8A%A8%E9%9B%B6)
 - [303.区域和检索 - 数组不可变](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#303-%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2---%E6%95%B0%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98)
-- [643.有序数组的平方](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#977--%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9)
+- [338. 比特位计数](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#338-%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0)
+- [448. 找到所有数组中消失的数字](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#448-%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97)
+- [643.有序数组的平方](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#643-%E5%AD%90%E6%95%B0%E7%BB%84%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E6%95%B0-i)
+- [977.  有序数组的平方](https://github.com/zhpanvip/AndroidNote/wiki/%E6%95%B0%E7%BB%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#977--%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9)
 #### [二叉树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95)
+
 - [144. 二叉树前序遍历](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#144-%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86)
 - [94. 二叉树的中序遍历](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#94-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86)
 - [145. 二叉树的后序遍历](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#145-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86)
+- [100. 相同的树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91)
+- [101. 对称二叉树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91)
 - [102. 二叉树的层序遍历](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86)
 - [104. 二叉树的最大深度](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6)
 - [110. 平衡二叉树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91)
+- [226. 翻转二叉树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91)
+- [543.二叉树的直径](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84)
 - [617. 合并二叉树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#617-%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91)
 - [897. 递增顺序搜索树](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#897-%E9%80%92%E5%A2%9E%E9%A1%BA%E5%BA%8F%E6%90%9C%E7%B4%A2%E6%A0%91)
 - [剑指 Offer 32 - II. 从上到下打印二叉树 II](https://github.com/zhpanvip/AndroidNote/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95#%E5%89%91%E6%8C%87-offer-32---ii-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91-ii)
