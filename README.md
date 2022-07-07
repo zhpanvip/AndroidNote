@@ -22,9 +22,9 @@
 
 ### JVM
 
-- [JVM的内存区域](https://https://zhangpan.site/2020/09/04/26.JVM%20memory/)
-- [Java的垃圾回收机制](https://https://zhangpan.site/2020/09/19/29.Java%20GC/)
-- [JVM类加载的机制](https://https://zhangpan.site/2020/12/25/33.jvm-class-load/)
+- [JVM的内存区域](https://zhangpan.site/2020/09/04/26.JVM%20memory/)
+- [Java的垃圾回收机制](https://zhangpan.site/2020/09/19/29.Java%20GC/)
+- [JVM类加载的机制](https://zhangpan.site/2020/12/25/33.jvm-class-load/)
 
 
 ### 多线程与并发
