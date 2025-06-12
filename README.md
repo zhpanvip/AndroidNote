@@ -22,7 +22,7 @@
 
 ### JVM
 
-- [如何理解JVM的内存区域](https://zhangpan.site/2020/09/04/26.JVM%20memory/)
+- [如何理解JVM的内存区域](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3Java%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md)
 - [Java的垃圾回收机制](https://zhangpan.site/2020/09/19/29.Java%20GC/)
 - [JVM类加载的机制](https://zhangpan.site/2020/12/25/33.jvm-class-load/)
 
