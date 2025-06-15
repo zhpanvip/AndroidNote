@@ -2,6 +2,8 @@
 
 ## 事件分发流程
 
+![事件分发流程图](https://cdn.jsdelivr.net/gh/zhpanvip/images/project/note/input_dispatch.png)
+
 ### 1.事件在DecorView中的分发过程
 
 ViewRootImpl在接收到输入事件后最终会调用DecorView的dispatchPointerEvent，由于DecorView没有重写dispatchPointerEvent，所以调用的是View的dispatchPointerEvent，而View的dispatchPointerEvent又中会调用dispatchTouchEvent，这个方法在DecorView中被重写了，代码如下：
@@ -290,6 +292,8 @@ private boolean dispatchTransformedTouchEvent(MotionEvent event, boolean cancel,
 }
 
 ```
+
+
 
 ### 5. ACTION_CANCEL事件的处理
 
