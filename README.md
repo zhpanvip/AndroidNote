@@ -51,6 +51,9 @@
 
 ## Kotlin
 
+- [kotlin Flow 入门](https://guolin.blog.csdn.net/article/details/127466982)
+- [StateFlow和SharedFlow](https://guolin.blog.csdn.net/article/details/128591076)
+- [kotlin Flow 操作符函数](https://blog.csdn.net/guolin_blog/article/details/127939641)
 - [协程实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8D%8F%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [高阶函数实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
