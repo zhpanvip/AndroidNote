@@ -3,26 +3,24 @@
 ## Java基础
 
 ### 面向对象与Java基础知识
-- [Java中的泛型](https://zhangpan.site/2021/01/16/java-generics/)
-- [Java注解](https://zhangpan.site/2018/08/25/17.Java%20annotation/)
-- [Java反射](https://zhangpan.site/2021/01/14/36-java-reflection/)
-- [Java编译时注解处理器](https://zhangpan.site/2018/09/10/18.java%20apt/)
-- [Java中的String字符串](https://zhangpan.site/2020/09/08/27.String%20in%20java(1)/)
-- [StringBuilder与StringBuffer](https://zhangpan.site/2020/09/12/28.String%20in%20java%20(2)/)
-- [Java基础常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8EJava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)
+- [Java基础常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/Java%E5%9F%BA%E7%A1%80%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98)
+- [Java泛型](https://github.com/zhpanvip/AndroidNote/wiki/Java-%E6%B3%9B%E5%9E%8B)
+- [Java注解与反射](https://github.com/zhpanvip/AndroidNote/wiki/Java-%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84)
+- [Java 字符串](https://github.com/zhpanvip/AndroidNote/wiki/Java-%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2)
+
 
 
 ### Java集合框架
-
+- [arrayList与LinkedList](https://github.com/zhpanvip/AndroidNote/wiki/ArrayList%E4%B8%8ELinkedList)
 - [Hash表](https://github.com/zhpanvip/AndroidNote/wiki/Hash%E8%A1%A8%E4%B8%8EHashMap)
+- [HashMap与HashTable](https://github.com/zhpanvip/AndroidNote/wiki/HashMap%E4%B8%8EHashTable)
 - [ConcurrentHashMap](https://github.com/zhpanvip/AndroidNote/wiki/ConcurrentHashMap)
-- [HashMap的工作原理](https://github.com/zhpanvip/AndroidNote/wiki/HashMap%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Java集合常见问题](https://github.com/zhpanvip/AndroidNote/wiki/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6#3hashtable%E4%B8%8Ehashmap%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
 
 
 ### JVM
 
-- [如何理解JVM的内存区域](https://github.com/zhpanvip/AndroidNote/blob/main/post/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3Java%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md)
+- [如何理解JVM的内存区域](https://github.com/zhpanvip/AndroidNote/wiki/%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3Java%E7%9A%84%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F)
 - [Java的垃圾回收机制](https://zhangpan.site/2020/09/19/29.Java%20GC/)
 - [JVM类加载的机制](https://zhangpan.site/2020/12/25/33.jvm-class-load/)
 
