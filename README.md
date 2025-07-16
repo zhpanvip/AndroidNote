@@ -38,13 +38,14 @@
 - [多线程与并发常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E5%9F%BA%E7%A1%80)
 
 ## 设计模式
-
-- [单例模式](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F)
-- [动态代理](https://github.com/zhpanvip/AndroidNote/wiki/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86)
-- [观察者模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
-- [责任链模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
-- [策略模式]()
-- [命令模式]()
+- [设计模式六大原则](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99)
+- [单例模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F)
+- [静态代理](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F#%E4%B8%80%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86)
+- [动态代理](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F#%E4%BA%8C%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86)
+- [观察者模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
+- [责任链模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
+- [策略模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F)
+- [命令模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F)
 
 ## Kotlin
 
