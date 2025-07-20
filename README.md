@@ -57,6 +57,13 @@
 
 ## Android
 
+### 项目相关问题
+
+- [项目 1](https://github.com/zhpanvip/resume/blob/main/project3.md)
+- [项目 3](https://github.com/zhpanvip/resume/blob/main/project2.md)
+- [项目 3](https://github.com/zhpanvip/resume/blob/main/project1.md)
+- [HRQ&A](https://github.com/zhpanvip/AndroidNote/wiki/HR%E9%9D%A2%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98)
+
 ### Android基础知识
 
 - [Android基础知识汇总](https://github.com/zhpanvip/AndroidNote/wiki/Android%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB)
@@ -96,13 +103,11 @@
 - [Dalvik与ART](https://github.com/zhpanvip/AndroidNote/wiki/Dalvik%E4%B8%8EART)
 
 
-
 ### View事件分发机制
 
 - [ViewRootImpl](https://github.com/zhpanvip/AndroidNote/wiki/ViewRootImpl)
 - [事件分发机制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6)
 - [事件分发常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/View%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98)
-
 
 
 ### Android屏幕刷新机制
@@ -144,8 +149,6 @@
 - [线上性能监控1--线上监控切入点](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BA%BF%E4%B8%8A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7)
 - [线上性能监控2--Matrix实现原理](https://github.com/zhpanvip/AndroidNote/wiki/%E7%BA%BF%E4%B8%8A%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A72-Matrix%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 
-
-
 ### Jetpack&系统View
 
 - [ViewModel的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ViewModel%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
@@ -179,6 +182,8 @@
 - [HTTP协议](https://github.com/zhpanvip/AndroidNote/wiki/Http%E5%8D%8F%E8%AE%AE)
 - [HTTPS的实现原理](https://github.com/zhpanvip/AndroidNote/wiki/HTTPS%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Socket](https://github.com/zhpanvip/AndroidNote/wiki/Socket)
+
+
 
 ### 算法
 
@@ -257,6 +262,3 @@
 #### [递归](https://github.com/zhpanvip/AndroidNote/wiki/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95)
 #### [动态规划](https://github.com/zhpanvip/AndroidNote/wiki/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
 
-### 其它
-
-- [HR常见问题](https://github.com/zhpanvip/AndroidNote/wiki/HR%E9%9D%A2%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98)
