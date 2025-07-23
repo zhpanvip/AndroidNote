@@ -39,6 +39,7 @@
 
 ## 设计模式
 - [设计模式六大原则](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99)
+- [建造者模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F)
 - [单例模式](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F)
 - [静态代理](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F#%E4%B8%80%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86)
 - [动态代理](https://github.com/zhpanvip/AndroidNote/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F#%E4%BA%8C%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86)
@@ -87,21 +88,10 @@
 - [IntentService](https://github.com/zhpanvip/AndroidNote/wiki/IntentService%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Handler常见面试题](https://github.com/zhpanvip/AndroidNote/wiki/Handler%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98)
 
-### Framework
+### Android Binder
 
 - [Binder与AIDL](https://github.com/zhpanvip/AndroidNote/wiki/Binder%E4%B8%8EAIDL)
 - [Binder实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Binder%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86)
-- [Android系统启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
-- [InputManagerService](https://github.com/zhpanvip/AndroidNote/wiki/InputManagerService)
-- [WindowManagerService](https://github.com/zhpanvip/AndroidNote/wiki/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
-- [Choreographer详解](https://github.com/zhpanvip/AndroidNote/wiki/Choreographer%E8%AF%A6%E8%A7%A3)
-- [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
-- [ViewRootImpl](https://github.com/zhpanvip/AndroidNote/wiki/ViewRootImpl)
-- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
-- [APP启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
-- [PMS安装与签名校验](https://github.com/zhpanvip/AndroidNote/wiki/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C)
-- [Dalvik与ART](https://github.com/zhpanvip/AndroidNote/wiki/Dalvik%E4%B8%8EART)
-
 
 ### View事件分发机制
 
@@ -136,6 +126,19 @@
 - [Activity启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 - [Activity的finish流程](https://github.com/zhpanvip/AndroidNote/wiki/Activity%E7%9A%84finish%E6%B5%81%E7%A8%8B)
 
+### Framework
+
+- [Android系统启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
+- [InputManagerService](https://github.com/zhpanvip/AndroidNote/wiki/InputManagerService)
+- [WindowManagerService](https://github.com/zhpanvip/AndroidNote/wiki/WMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
+- [Choreographer详解](https://github.com/zhpanvip/AndroidNote/wiki/Choreographer%E8%AF%A6%E8%A7%A3)
+- [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
+- [ViewRootImpl](https://github.com/zhpanvip/AndroidNote/wiki/ViewRootImpl)
+- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
+- [APP启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
+- [PMS安装与签名校验](https://github.com/zhpanvip/AndroidNote/wiki/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C)
+- [Dalvik与ART](https://github.com/zhpanvip/AndroidNote/wiki/Dalvik%E4%B8%8EART)
+
 ### 性能优化
 
 - [内存优化策略](https://github.com/zhpanvip/AndroidNote/wiki/%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96)
@@ -167,8 +170,6 @@
 - [ButterKnife实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Butterknife%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [ARouter实现原理](https://github.com/zhpanvip/AndroidNote/wiki/ARouter%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
 - [Tinker实现原理](https://github.com/zhpanvip/AndroidNote/wiki/Tinker%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
-
-
 
 
 ### 计算机网络
