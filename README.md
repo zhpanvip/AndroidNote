@@ -8,8 +8,6 @@
 - [Java注解与反射](https://github.com/zhpanvip/AndroidNote/wiki/Java-%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84)
 - [Java 字符串](https://github.com/zhpanvip/AndroidNote/wiki/Java-%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2)
 
-
-
 ### Java集合框架
 - [arrayList与LinkedList](https://github.com/zhpanvip/AndroidNote/wiki/ArrayList%E4%B8%8ELinkedList)
 - [Hash表](https://github.com/zhpanvip/AndroidNote/wiki/Hash%E8%A1%A8%E4%B8%8EHashMap)
@@ -112,18 +110,17 @@
 
 ### View的绘制流程
 
-- [简述View的绘制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
+- [View的绘制流程](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#1view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E6%A6%82%E8%BF%B0)
 - [requestLayout与invalidate](https://github.com/zhpanvip/AndroidNote/wiki/requestLayout%E4%B8%8Einvalidate)
 - [LayoutInflater](https://github.com/zhpanvip/AndroidNote/wiki/LayoutInflater)
 - [MeasureSpec是什么？](https://github.com/zhpanvip/AndroidNote/wiki/View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B#2measurespec%E6%98%AF%E4%BB%80%E4%B9%88)
 
 ### Activity启动
 
-- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
+- [Activity启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Activity-%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 - [ActivityThread](https://github.com/zhpanvip/AndroidNote/wiki/ActivityThread)
 - [ActivityRecord](https://github.com/zhpanvip/AndroidNote/wiki/ActivityRecord)
 - [Instrumentation](https://github.com/zhpanvip/AndroidNote/wiki/Instrumentation)
-- [Activity启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
 - [Activity的finish流程](https://github.com/zhpanvip/AndroidNote/wiki/Activity%E7%9A%84finish%E6%B5%81%E7%A8%8B)
 
 ### Framework
@@ -134,10 +131,10 @@
 - [Choreographer详解](https://github.com/zhpanvip/AndroidNote/wiki/Choreographer%E8%AF%A6%E8%A7%A3)
 - [SurfaceFlinger](https://github.com/zhpanvip/AndroidNote/wiki/SurfaceFlinger)
 - [ViewRootImpl](https://github.com/zhpanvip/AndroidNote/wiki/ViewRootImpl)
-- [ActivityManagerService](https://github.com/zhpanvip/AndroidNote/wiki/AMS%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90)
 - [APP启动流程](https://github.com/zhpanvip/AndroidNote/wiki/App%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
-- [PMS安装与签名校验](https://github.com/zhpanvip/AndroidNote/wiki/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C)
-- [Dalvik与ART](https://github.com/zhpanvip/AndroidNote/wiki/Dalvik%E4%B8%8EART)
+- [Activity启动流程](https://github.com/zhpanvip/AndroidNote/wiki/Activity-%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B)
+- [PMS 安装与签名校验](https://github.com/zhpanvip/AndroidNote/wiki/PMS%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C)
+- [Dalvik 与 ART](https://github.com/zhpanvip/AndroidNote/wiki/Dalvik%E4%B8%8EART)
 
 ### 性能优化
 
